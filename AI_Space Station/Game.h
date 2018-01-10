@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "alien.h"
 #include "Spawner.h"
-
+#include "Grid.h"
 
 class Game {
 public:
@@ -20,6 +20,7 @@ private:
 	//void processEvents();
 
 	Player m_player;
+	Grid grid;
 	int speed = 0;
 	int accel = 1;
 	float rotato = 7.0f;

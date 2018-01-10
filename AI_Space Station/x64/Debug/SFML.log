@@ -1,10 +1,3 @@
-﻿  Spawner.cpp
-  Bullet.cpp
-c:\users\foxbl\desktop\ai_spacestation\ai_space station\bullet.cpp(32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
-  Game.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  SFML.vcxproj -> C:\Users\foxbl\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe
+﻿  Grid.cpp
+c:\users\dale sinnott\documents\githubdir\ai_spacestation\ai_space station\grid.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  SFML.vcxproj -> C:\Users\Dale Sinnott\Documents\GitHubDir\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe
