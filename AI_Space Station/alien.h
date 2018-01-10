@@ -6,19 +6,18 @@ class alien
 {
 
 public:
-	alien();
+	alien(sf::Vector2f pos, sf::Vector2f vel, std::string file, int s, float maxSpeed, int health);
 	~alien();
 
 	void update(sf::RenderWindow &w);
 	void updateMovement(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v);
 	void render(sf::RenderWindow &w);
-	void create(sf::Vector2f pos, sf::Vector2f vel, std::string file, int s, float maxSpeed);
+	void createBehaviour(int s);
 	void dynamicWander(sf::Vector2f pos);
 	void dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation);
 	void dynamicFlee(sf::Vector2f pos, sf::Time t, float rotation);
 	void dynamicArrive(sf::Vector2f pos);
 	void pursue(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v);
-	
 
 	
 
@@ -26,6 +25,8 @@ public:
 	int behaviour = 0;
 	enum state { IDLE, WANDER, SEEK, FLEE, ARRIVE, PURSUE};
 
+	bool alive = true;
+	int hp = 2;
 
 
 private:
@@ -49,6 +50,11 @@ private:
 
 	float currentOrientation = 0;
 	float m_rotation = 0;
+
+	int spawnCount = 0;
+	int spawnTimer = 0;
+	int MAX_SPAWN = 2;
+
 
 	float getNewOrientation(float orientation, sf::Vector2f v);
 	std::string m_file;

@@ -7,22 +7,20 @@ float angularVel(float r, float m_r);
 
 sf::Vector2f linear(sf::Vector2f v, sf::Vector2f m_v, float accel);
 
-alien::alien()
+alien::alien(sf::Vector2f pos, sf::Vector2f vel, std::string file, int s, float maxSpeed, int health) : m_pos(pos), m_file(file),
+m_velocity(vel), MAX_SPEED(maxSpeed), hp(health)
 {
-
+	m_spr.setOrigin(m_spr.getGlobalBounds().width / 2, m_spr.getGlobalBounds().height / 2);
+	createBehaviour(s);
+	loadSprite();
+	alive = true;
 }
 alien::~alien()
 {
 
 }
-void alien::create(sf::Vector2f pos, sf::Vector2f vel, std::string file, int s, float maxSpeed)
+void alien::createBehaviour(int s)
 {
-	m_pos = pos;
-	m_velocity = vel;
-	m_file = file;
-	loadSprite();
-	MAX_SPEED = maxSpeed;
-	m_spr.setOrigin(m_spr.getGlobalBounds().width / 2, m_spr.getGlobalBounds().height / 2);
 
 	switch (s)
 	{

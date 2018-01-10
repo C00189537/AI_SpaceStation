@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+
 #include "Player.h"
 #include "alien.h"
+#include "Spawner.h"
 
 
 class Game {
@@ -22,7 +24,7 @@ private:
 	int accel = 1;
 	float rotato = 5.0f;
 	sf::RenderWindow m_window;
-
+	std::vector<Spawner*> spawners;
 
 
 

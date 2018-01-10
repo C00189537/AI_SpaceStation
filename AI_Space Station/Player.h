@@ -13,7 +13,7 @@ public:
 	void update(sf::RenderWindow &w);
 	void updateVelocity(int v);
 	void render(sf::RenderWindow &w);
-	void create(sf::Vector2f pos, sf::Vector2f vel, std::string file);
+	void create(sf::Vector2f p, sf::Vector2f vel, std::string file);
 	void setObjRotation(float r);
 	void shoot();
 	sf::Vector2f getVelocity();
@@ -21,7 +21,7 @@ public:
 	int MAX_SPEED = 10;
 	int MIN_SPEED = -10;
 	float angle = 0;
-	sf::Vector2f m_pos;
+	sf::Vector2f pos;
 
 	std::vector<Bullet*> bullets;
 	int MAX_BULLETS = 10;

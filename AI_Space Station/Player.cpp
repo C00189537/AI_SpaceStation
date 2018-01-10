@@ -9,9 +9,9 @@ Player::~Player()
 {
 
 }
-void Player::create(sf::Vector2f pos, sf::Vector2f vel, std::string file)
+void Player::create(sf::Vector2f p, sf::Vector2f vel, std::string file)
 {
-	m_pos = pos;
+	pos = p;
 	m_velocity = vel;
 	m_file = file;
 	loadSprite();
@@ -25,7 +25,7 @@ void Player::loadSprite()
 		std::cout << "problem loading logo" << std::endl;
 	}
 	m_spr.setTexture(m_texture);
-	m_spr.setPosition(m_pos.x, m_pos.y);
+	m_spr.setPosition(pos.x, pos.y);
 }
 void Player::update(sf::RenderWindow &w)
 {
@@ -48,8 +48,8 @@ void Player::update(sf::RenderWindow &w)
 }
 void Player::updateVelocity(int v)
 {
-	m_pos = sf::Vector2f(m_pos.x + cos(m_spr.getRotation() * 3.14159265 / 180) * v, m_pos.y + sin(m_spr.getRotation() * 3.14159265 / 180) * v);
-	m_spr.setPosition(m_pos);
+	pos = sf::Vector2f(pos.x + cos(m_spr.getRotation() * 3.14159265 / 180) * v, pos.y + sin(m_spr.getRotation() * 3.14159265 / 180) * v);
+	m_spr.setPosition(pos);
 }
 void Player::render(sf::RenderWindow &w)
 {
@@ -66,22 +66,22 @@ void Player::boundary(sf::RenderWindow &w)
 {
 	if (m_spr.getPosition().x > w.getSize().x)
 	{
-		m_pos.x = 0 -m_spr.getGlobalBounds().width;
+		pos.x = 0 -m_spr.getGlobalBounds().width;
 	}
 	else if (m_spr.getPosition().y > w.getSize().y)
 	{
-		m_pos.y = 0 - m_spr.getGlobalBounds().height;
+		pos.y = 0 - m_spr.getGlobalBounds().height;
 	}
 	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width < 0)
 	{
-		m_pos.x = w.getSize().x;
+		pos.x = w.getSize().x;
 	}
 	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height < 0)
 	{
-		m_pos.y = w.getSize().y;
+		pos.y = w.getSize().y;
 	}
 
-	m_spr.setPosition(m_pos);
+	m_spr.setPosition(pos);
 }
 void Player::setObjRotation(float r)
 {
@@ -96,7 +96,7 @@ void Player::shoot()
 	if (currentBullets < MAX_BULLETS)
 	{
 		currentBullets++;
-		bullets.push_back(new Bullet(sf::Vector2f(m_pos.x, m_pos.y), "assets/playerbullet.png", m_spr.getRotation()));
+		bullets.push_back(new Bullet(sf::Vector2f(pos.x, pos.y), "assets/playerbullet.png", m_spr.getRotation()));
 		std::cout << "Fire" << std::endl;
 	}
 }
