@@ -20,12 +20,13 @@ public:
 
 	int MAX_SPEED = 10;
 	int MIN_SPEED = 0;
-	float angle = 0;
+	float angle = 20;
 	sf::Vector2f pos;
 
 	std::vector<Bullet*> bullets;
 	int MAX_BULLETS = 100;
 	int currentBullets = 0;
+	float getRotation();
 
 private:
 

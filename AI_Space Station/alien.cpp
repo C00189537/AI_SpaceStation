@@ -125,6 +125,7 @@ void alien::dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation)
 
 	//Linear acceleration
 	float rotato = phys.angularVel(rotation, m_rotation);
+	std::cout << rotato << std::endl;
 	m_rotation = m_spr.getRotation() + rotato * t.asSeconds();
 
 
@@ -172,6 +173,7 @@ void alien::dynamicFlee(sf::Vector2f pos, sf::Time t, float rotation)
 	}
 	m_pos = sf::Vector2f(m_pos.x + m_velocity.x, m_pos.y + m_velocity.y);
 	m_orientation = m_orientation + m_rotation * t.asSeconds();
+
 }
 void alien::dynamicArrive(sf::Vector2f pos)
 {

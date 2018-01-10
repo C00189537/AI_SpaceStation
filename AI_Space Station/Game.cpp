@@ -68,7 +68,7 @@ void Game::update(sf::Time t)
 	m_player.updateVelocity(speed);
 	for (int i = 0; i < spawners.size(); i++)
 	{
-		spawners.at(i)->update(m_player.pos, m_window, t, m_player.angle, m_player.getVelocity());
+		spawners.at(i)->update(m_player.pos, m_window, t, m_player.getRotation(), m_player.getVelocity());
 	}
 	keyController();
 	

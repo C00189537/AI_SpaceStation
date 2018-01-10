@@ -16,6 +16,7 @@ void Player::create(sf::Vector2f p, sf::Vector2f vel, std::string file)
 	m_file = file;
 	loadSprite();
 	m_spr.setOrigin(m_spr.getGlobalBounds().width / 2, m_spr.getGlobalBounds().height / 2);
+	angle = 20;
 }
 void Player::loadSprite()
 {
@@ -90,6 +91,10 @@ void Player::setObjRotation(float r)
 sf::Vector2f Player::getVelocity()
 {
 	return m_velocity;
+}
+float Player::getRotation()
+{
+	return m_spr.getRotation();
 }
 void Player::shoot()
 {

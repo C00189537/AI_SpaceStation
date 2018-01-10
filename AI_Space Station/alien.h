@@ -34,7 +34,7 @@ private:
 
 	float m_orientation = 0;
 
-	int MAX_ROTATION = 1;
+	int MAX_ROTATION = 360;
 	float MAX_SPEED;
 	float maxTimePrediction = 20.0f;
 
