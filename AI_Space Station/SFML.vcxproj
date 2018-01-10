@@ -20,16 +20,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="alien.cpp" />
+    <ClCompile Include="BasicTypes.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HomingMissiles.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Spawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien.h" />
+    <ClInclude Include="BasicTypes.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HomingMissiles.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Spawner.h" />
   </ItemGroup>

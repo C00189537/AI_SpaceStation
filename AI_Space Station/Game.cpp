@@ -6,7 +6,7 @@
 Game::Game() :
 	m_window{ sf::VideoMode{ 1920, 1080, 32 }, "AI Behaviours" }
 {
-	m_player.create(sf::Vector2f(300.0f, 300.0f), sf::Vector2f(1.0f, 0.0f), "assets/player64.png");
+	m_player.create(sf::Vector2f(300.0f, 300.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
 }
 Game::~Game()
@@ -34,7 +34,7 @@ void Game::run()
 				{
 					m_window.close();
 				}
-				if (sf::Keyboard::Up == event.key.code)
+				/*if (sf::Keyboard::Up == event.key.code)
 				{
 					if (speed < m_player.MAX_SPEED)
 						speed += accel;
@@ -55,7 +55,7 @@ void Game::run()
 				if (sf::Keyboard::Space == event.key.code)
 				{
 					m_player.shoot();
-				}
+				}*/
 			}
 
 		}
@@ -70,16 +70,47 @@ void Game::update(sf::Time t)
 	{
 		spawners.at(i)->update(m_player.pos, m_window, t, m_player.angle, m_player.getVelocity());
 	}
-
+	keyController();
+	
 }
 void Game::render()
 {
 	m_window.clear(sf::Color::Black);
-	m_player.render(m_window);
 	for (int i = 0; i < spawners.size(); i++)
 	{
 		spawners.at(i)->render(m_window);
 	}
+	m_player.render(m_window);
 	m_window.display();
 }
 
+void Game::keyController()
+{
+	//Space to shoot
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	{
+		m_player.shoot();
+	}
+	//Accelerate
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+	{
+		if (speed < m_player.MAX_SPEED)
+			speed += accel;
+	}
+	//Deccelerate
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+	{
+		if (speed > m_player.MIN_SPEED)
+			speed -= accel;
+	}
+	//Left
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+	{
+		m_player.setObjRotation(-rotato);
+	}
+	//Right
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+	{
+		m_player.setObjRotation(rotato);
+	}
+}

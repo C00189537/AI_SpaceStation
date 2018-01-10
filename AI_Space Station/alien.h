@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "BasicTypes.h"
 #include <SFML\Graphics.hpp>
 #include <math.h>
 class alien
@@ -60,5 +61,6 @@ private:
 	std::string m_file;
 	void loadSprite();
 	void boundary(sf::RenderWindow &w);
+	BasicTypes phys;
 
 };

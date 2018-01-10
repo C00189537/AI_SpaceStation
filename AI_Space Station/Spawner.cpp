@@ -18,13 +18,17 @@ void Spawner::loadSprite()
 	}
 	m_spr.setTexture(m_texture);
 	m_spr.setPosition(m_pos.x, m_pos.y);
+	m_spr.setOrigin(m_spr.getGlobalBounds().height / 2, m_spr.getGlobalBounds().width / 2);
 }
 void Spawner::update(sf::Vector2f targetPos, sf::RenderWindow &w, sf::Time t, float rotation, sf::Vector2f v)
 {
+	rotationer();
+
 	spawnTimer++;
 	if(spawnTimer > 100)
 	{
 		spawn();
+		shoot(m_pos);
 		spawnTimer = 0;
 	}
 	for (int i = 0; i < predators.size(); i++)
@@ -32,13 +36,26 @@ void Spawner::update(sf::Vector2f targetPos, sf::RenderWindow &w, sf::Time t, fl
 		predators.at(i)->update(w);
 		predators.at(i)->updateMovement(targetPos, t, rotation, v);
 	}
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		if (bullets.at(i)->alive)
+		{
+			bullets.at(i)->update(w, targetPos, t, rotation);
+		}
+		else
+		{
+			delete bullets.at(i);
+			bullets.erase(bullets.begin());
+			bulletCount--;
+		}
+	}
 }
 void Spawner::spawn()
 {
 	if (spawnCount < MAX_SPAWN)
 	{
 		spawnCount++;
-		predators.push_back(new alien(sf::Vector2f(m_pos.x, m_pos.y), sf::Vector2f(1, 1), "assets/predator64.png", 2, 5, 4));
+		predators.push_back(new alien(sf::Vector2f(m_pos.x, m_pos.y), sf::Vector2f(1, 1), "assets/predator32.png", 2, 5, 4));
 	}
 }
 void Spawner::render(sf::RenderWindow &w)
@@ -48,13 +65,25 @@ void Spawner::render(sf::RenderWindow &w)
 	{
 		predators.at(i)->render(w);
 	}
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets.at(i)->render(w);
+	}
 }
 void Spawner::shoot(sf::Vector2f pos)
 {
 	if (bulletCount < MAX_BULLETS)
 	{
 		bulletCount++;
-		//bullets.push_back(new Bullet(sf::Vector2f(m_pos.x, m_pos.y), "assets/playerbullet.png", m_spr.getRotation()));
+		bullets.push_back(new HomingMissiles(sf::Vector2f(m_pos.x, m_pos.y), "assets/hivebullet.png", m_spr.getRotation()));
 		std::cout << "Fire" << std::endl;
+	}
+}
+void Spawner::rotationer()
+{
+	rotationTimer++;
+	if (rotationTimer > 20)
+	{
+		m_spr.setRotation(m_spr.getRotation() + 2);
 	}
 }

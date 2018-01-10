@@ -31,7 +31,7 @@ void Bullet::update(sf::RenderWindow &w)
 	boundary(w);
 	m_pos = sf::Vector2f(m_pos.x + cos(m_spr.getRotation() * 3.14159265 / 180) * speed, m_pos.y + sin(m_spr.getRotation() * 3.14159265 / 180) * speed);
 	m_spr.setPosition(m_pos);
-	timeToLive();
+	timeToLive(100);
 
 }
 
@@ -41,31 +41,21 @@ void Bullet::render(sf::RenderWindow &w)
 }
 void Bullet::boundary(sf::RenderWindow &w)
 {
-	if (m_spr.getPosition().x > w.getSize().x)
+	if (m_spr.getPosition().x > w.getSize().x || m_spr.getPosition().y > w.getSize().y 
+		|| m_spr.getPosition().x + m_spr.getGlobalBounds().width < 0 
+		|| m_spr.getPosition().y + m_spr.getGlobalBounds().height < 0)
 	{
-		//Destroy
-	}
-	else if (m_spr.getPosition().y > w.getSize().y)
-	{
-		//Destroy
-	}
-	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width < 0)
-	{
-		//Destroy
-	}
-	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height < 0)
-	{
-		//Destroy
+		
 	}
 }
 void Bullet::setObjRotation(float r)
 {
 	m_spr.setRotation(r);
 }
-void Bullet::timeToLive()
+void Bullet::timeToLive(int t)
 {
 	ttl++;
-	if (ttl > 100)
+	if (ttl > t)
 	{
 		alive = false;
 	}

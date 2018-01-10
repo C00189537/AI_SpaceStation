@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML\Graphics.hpp"
 #include "alien.h"
+#include "HomingMissiles.h"
 #include <iostream>
 #include <vector>
 class Spawner
@@ -28,11 +29,16 @@ private:
 	int MAX_SPAWN;
 
 	int bulletCount = 0;
-	const int MAX_BULLETS = 1;
+	const int MAX_BULLETS = 20;
 
 	std::string m_file;
 	void loadSprite();
 
 	std::vector<alien*> predators;
+	std::vector<HomingMissiles*> bullets;
+
+	int rotationTimer = 0;
+	void rotationer();
+
 };
 

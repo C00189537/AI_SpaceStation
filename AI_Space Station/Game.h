@@ -22,10 +22,10 @@ private:
 	Player m_player;
 	int speed = 0;
 	int accel = 1;
-	float rotato = 5.0f;
+	float rotato = 7.0f;
 	sf::RenderWindow m_window;
 	std::vector<Spawner*> spawners;
-
+	void keyController();
 
 
 };

@@ -1,9 +1,11 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "BasicTypes.h"
 #include <iostream>
 class Bullet
 {
 public:
+	Bullet() {}
 	Bullet(sf::Vector2f pos, std::string file, float r);
 	~Bullet();
 	
@@ -17,7 +19,7 @@ public:
 	sf::Vector2f m_pos;
 	bool alive;
 
-private:
+protected:
 
 	sf::Vector2f m_velocity;
 	sf::Texture m_texture;
@@ -26,7 +28,10 @@ private:
 	std::string m_file;
 	void loadSprite();
 	void boundary(sf::RenderWindow &w);
-	void timeToLive();
+	void timeToLive(int t);
 	int ttl = 0;
+
+	const int MAX_SPEED = 20;
+	const int MAX_ACCEL_LIN = 20;
 };
 

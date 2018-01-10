@@ -4,8 +4,15 @@ class HomingMissiles :
 	public Bullet
 {
 public:
-	HomingMissiles();
+	HomingMissiles(sf::Vector2f pos, std::string file, float r);
 	~HomingMissiles();
-	void update();
+	void update(sf::RenderWindow &w, sf::Vector2f targetPos, sf::Time t, float rotation);
+	void dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation);
+	void pursue(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v);
+
+private:
+	float maxTimePrediction = 20.0f;
+	BasicTypes phys;
+	float m_rotation;
 };
 

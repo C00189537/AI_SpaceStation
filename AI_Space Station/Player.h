@@ -19,12 +19,12 @@ public:
 	sf::Vector2f getVelocity();
 
 	int MAX_SPEED = 10;
-	int MIN_SPEED = -10;
+	int MIN_SPEED = 0;
 	float angle = 0;
 	sf::Vector2f pos;
 
 	std::vector<Bullet*> bullets;
-	int MAX_BULLETS = 10;
+	int MAX_BULLETS = 100;
 	int currentBullets = 0;
 
 private:
