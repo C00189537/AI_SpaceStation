@@ -18,7 +18,7 @@ public:
 	void shoot();
 	sf::Vector2f getVelocity();
 
-	int MAX_SPEED = 10;
+	int MAX_SPEED = 2;
 	int MIN_SPEED = 0;
 	float angle = 0;
 	sf::Vector2f pos;
