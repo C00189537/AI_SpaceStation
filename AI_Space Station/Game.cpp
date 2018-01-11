@@ -40,28 +40,6 @@ void Game::run()
 				{
 					m_window.close();
 				}
-				/*if (sf::Keyboard::Up == event.key.code)
-				{
-					if (speed < m_player.MAX_SPEED)
-						speed += accel;
-				}
-				if (sf::Keyboard::Down == event.key.code)
-				{
-					if (speed > m_player.MIN_SPEED)
-						speed -= accel;
-				}
-				if (sf::Keyboard::Right == event.key.code)
-				{
-					m_player.setObjRotation(rotato);
-				}
-				if (sf::Keyboard::Left == event.key.code)
-				{
-					m_player.setObjRotation(-rotato);
-				}
-				if (sf::Keyboard::Space == event.key.code)
-				{
-					m_player.shoot();
-				}*/
 			}
 
 		}
@@ -74,13 +52,14 @@ void Game::update(sf::Time t)
 	m_player.updateVelocity(speed);
 	for (int i = 0; i < spawners.size(); i++)
 	{
-
-		spawners.at(i)->update(m_player.pos, m_window, t, m_player.angle, m_player.getVelocity());
+		spawners.at(i)->update(m_player.pos, m_window, t, m_player.getRotation(), m_player.getVelocity());
 	}
+	CollisionManager();
 	keyController();
 	camera.setCenter(m_player.pos); 
 	m_window.setView(camera); //comment out for full view
 	radar.update();
+
 }
 void Game::render()
 {
@@ -124,4 +103,13 @@ void Game::keyController()
 	{
 		m_player.setObjRotation(rotato);
 	}
+}
+void Game::CollisionManager()
+{
+	for (int i = 0; i < spawners.size(); i++)
+	{
+		spawners.at(i)->collisionManager(m_player.getRects());
+		m_player.collisionManager(spawners.at(i)->getRects());
+	}
+	
 }

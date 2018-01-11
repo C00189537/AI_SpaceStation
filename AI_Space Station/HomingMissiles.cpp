@@ -7,11 +7,10 @@ HomingMissiles::HomingMissiles(sf::Vector2f pos, std::string file, float r) : Bu
 HomingMissiles::~HomingMissiles()
 {
 }
-void HomingMissiles::update(sf::RenderWindow &w, sf::Vector2f targetPos, sf::Time t, float rotation)
+void HomingMissiles::update(sf::Vector2f targetPos, sf::Time t, float rotation)
 {
 	dynamicSeek(targetPos, t, rotation);
 	m_spr.setPosition(m_pos);
-	boundary(w);
 	timeToLive(200);
 }
 void HomingMissiles::dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation)

@@ -20,21 +20,27 @@ public:
 
 	int MAX_SPEED = 2;
 	int MIN_SPEED = 0;
-	float angle = 0;
+	float angle = 20;
 	sf::Vector2f pos;
 
 	std::vector<Bullet*> bullets;
 	int MAX_BULLETS = 100;
 	int currentBullets = 0;
+	float getRotation();
+
+	std::vector<sf::IntRect> Player::getRects();
+	void collisionManager(std::vector<sf::IntRect> r);
 
 private:
 
-sf::Vector2f m_velocity;
-sf::Texture m_texture;
-sf::Sprite m_spr;
+	sf::Vector2f m_velocity;
+	sf::Texture m_texture;
+	sf::Sprite m_spr;
 
-std::string m_file;
-void loadSprite();
-void boundary(sf::RenderWindow &w);
+	std::string m_file;
+	void loadSprite();
+	void boundary(sf::RenderWindow &w);
+	sf::IntRect myBox;
+	int hp = 10;
 
 };

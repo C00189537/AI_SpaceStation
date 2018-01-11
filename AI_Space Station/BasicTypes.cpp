@@ -24,7 +24,7 @@ sf::Vector2f BasicTypes::linear(sf::Vector2f v, sf::Vector2f m_v, float accel)
 float BasicTypes::angularVel(float r, float m_r)
 {
 	float angularAccel = r - m_r;
-	return 0;
+	return angularAccel;
 }
 
 //Calculates the length of a vector

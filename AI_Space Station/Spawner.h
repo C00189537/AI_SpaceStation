@@ -1,6 +1,6 @@
 #pragma once
 #include "SFML\Graphics.hpp"
-#include "alien.h"
+#include "Predator.h"
 #include "HomingMissiles.h"
 #include <iostream>
 #include <vector>
@@ -14,7 +14,9 @@ public:
 	void spawn();
 	void render(sf::RenderWindow &w);
 	void shoot(sf::Vector2f pos);
-
+	sf::IntRect myBox;
+	void collisionManager(std::vector<sf::IntRect> r);
+	std::vector<sf::IntRect> getRects();
 private:
 
 	sf::Vector2f m_pos;
@@ -29,16 +31,19 @@ private:
 	int MAX_SPAWN;
 
 	int bulletCount = 0;
-	const int MAX_BULLETS = 20;
+	const int MAX_BULLETS = 1;
 
 	std::string m_file;
 	void loadSprite();
 
-	std::vector<alien*> predators;
+	std::vector<Predator*> predators;
 	std::vector<HomingMissiles*> bullets;
 
 	int rotationTimer = 0;
 	void rotationer();
-
+	
+	bool alive;
+	int hp = 10;
+	void isAlive();
 };
 
