@@ -1,3 +1,2 @@
-﻿  Grid.cpp
-c:\users\dale sinnott\documents\githubdir\ai_spacestation\ai_space station\grid.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  SFML.vcxproj -> C:\Users\Dale Sinnott\Documents\GitHubDir\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe
+﻿  Game.cpp
+  SFML.vcxproj -> C:\Users\froxe\Documents\git\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe

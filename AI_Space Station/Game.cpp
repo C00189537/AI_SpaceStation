@@ -6,6 +6,10 @@
 Game::Game() :
 	m_window{ sf::VideoMode{ 1920, 1080, 32 }, "AI Behaviours" }
 {
+	camera.setCenter(sf::Vector2f(0,0));
+	camera.setSize(sf::Vector2f(480,360));
+	camera.setViewport(sf::FloatRect(0, 0, 1, 1));
+
 	m_player.create(sf::Vector2f(300.0f, 300.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
 	grid.initialise();
@@ -72,7 +76,9 @@ void Game::update(sf::Time t)
 		spawners.at(i)->update(m_player.pos, m_window, t, m_player.angle, m_player.getVelocity());
 	}
 	keyController();
-	
+	camera.setCenter(m_player.pos); 
+	m_window.setView(camera); //comment out for full view
+
 }
 void Game::render()
 {
