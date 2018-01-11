@@ -1,9 +1,9 @@
-﻿  alien.cpp
-c:\users\connor\desktop\ai_spacestation\ai_space station\alien.cpp(139): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\alien.cpp(143): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\alien.cpp(146): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\alien.cpp(168): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\alien.cpp(172): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\alien.cpp(190): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\alien.cpp(194): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  Spawner.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\spawner.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Predator.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\predator.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
   SFML.vcxproj -> C:\Users\Connor\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe

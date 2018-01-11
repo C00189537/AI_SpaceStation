@@ -9,6 +9,7 @@ m_velocity(vel), MAX_SPEED(maxSpeed), hp(health)
 	createBehaviour(s);
 	loadSprite();
 	alive = true;
+	myBox = sf::IntRect(pos.x, pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
 }
 alien::~alien()
 {
@@ -24,15 +25,6 @@ void alien::createBehaviour(int s)
 		break;
 	case 2:
 		behaviour = state::SEEK;
-		break;
-	case 3:
-		behaviour = state::FLEE;
-		break;
-	case 4:
-		behaviour = state::ARRIVE;
-		break;
-	case 5:
-		behaviour = state::PURSUE;
 		break;
 	default:
 		break;
@@ -50,9 +42,8 @@ void alien::loadSprite()
 	m_spr.setTexture(m_texture);
 	m_spr.setPosition(m_pos.x, m_pos.y);
 }
-void alien::update(sf::RenderWindow &w)
+void alien::update()
 {
-	boundary(w);
 	m_spr.setRotation(m_orientation);
 }
 void alien::updateMovement(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v)
@@ -68,15 +59,6 @@ void alien::updateMovement(sf::Vector2f pos, sf::Time t, float rotation, sf::Vec
 	case alien::SEEK:
 		dynamicSeek(pos, t, rotation);
 		break;
-	case alien::FLEE:
-		dynamicFlee(pos, t, rotation);
-		break;
-	case alien::ARRIVE:
-		dynamicArrive(pos);
-		break;
-	case alien::PURSUE:
-		pursue(pos, t, rotation, v);
-		break;
 	default:
 		break;
 	}
@@ -88,33 +70,13 @@ void alien::render(sf::RenderWindow &w)
 	w.draw(m_spr);
 	//std::cout << "sprite drawn" << std::endl;
 }
-void alien::boundary(sf::RenderWindow &w)
+void alien::boundaryBullet(sf::IntRect target)
 {
-	if (m_spr.getPosition().x - (m_spr.getGlobalBounds().width / 2) > w.getSize().x)
+	if (target.intersects(myBox))
 	{
-		m_pos.x = 0 - (m_spr.getGlobalBounds().width / 3);
+		hp--;
 	}
-	else if (m_spr.getPosition().x + (m_spr.getGlobalBounds().width / 2) < 0)
-	{
-		m_pos.x = w.getSize().x + (m_spr.getGlobalBounds().width / 3);
-	}
-	else if (m_spr.getPosition().y - (m_spr.getGlobalBounds().height / 2) > w.getSize().y)
-	{
-		m_pos.y = 0 - m_spr.getGlobalBounds().height / 3;
-	}
-	else if (m_spr.getPosition().y + (m_spr.getGlobalBounds().height / 2) < 0)
-	{
-		m_pos.y = w.getSize().y + (m_spr.getGlobalBounds().height / 3);
-		std::cout << m_pos.y << std::endl;
-	}
-	m_spr.setPosition(m_pos);
-}
-
-//Wander: Moves towards a target while rotating randomly
-void alien::dynamicWander(sf::Vector2f pos)
-{
-	
-
+	isAlive();
 }
 //Seek: Follow the player
 void alien::dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation)
@@ -146,72 +108,21 @@ void alien::dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation)
 	m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
 	m_spr.setRotation(m_orientation);
 }
-void alien::dynamicFlee(sf::Vector2f pos, sf::Time t, float rotation)
+void alien::dynamicWander(sf::Vector2f pos)
 {
-	//Linear velocity
-	sf::Vector2f steering = phys.linear(m_pos, pos, MAX_ACCEL_LIN);
-	m_velocity = sf::Vector2f(m_velocity.x + steering.x * t.asSeconds(), m_velocity.y + steering.y * t.asSeconds());
-
-	//Linear acceleration
-	float rotato = phys.angularVel(rotation, m_rotation);
-	m_rotation = m_spr.getRotation() + rotato * t.asSeconds();
-
-
-	if (phys.length(m_velocity) > MAX_SPEED)
-	{
-		m_velocity = phys.normalise(m_velocity);
-		m_velocity = sf::Vector2f(m_velocity.x * MAX_SPEED, m_velocity.y * MAX_SPEED);
-	}
-
-	if (m_rotation > MAX_ROTATION)
-	{
-		m_rotation = MAX_ROTATION;
-	}
-	else if (-m_rotation > MAX_ROTATION)
-	{
-		m_rotation = -MAX_ROTATION;
-	}
-	m_pos = sf::Vector2f(m_pos.x + m_velocity.x, m_pos.y + m_velocity.y);
-	m_orientation = m_orientation + m_rotation * t.asSeconds();
 
 }
-void alien::dynamicArrive(sf::Vector2f pos)
+void alien::isAlive()
 {
-	sf::Vector2f direction = sf::Vector2f(pos.x - m_pos.x, pos.y - m_pos.y);
-	float distance = phys.length(direction);
-	int targetSpeed = 0;
-	//Set speed
-	if (distance < arrivalRad)
+	if (hp <= 0)
 	{
-		targetSpeed = 0;
+		alive = false;
 	}
-	else if (distance > slowRad)
-	{
-		targetSpeed = MAX_SPEED;
-	}
-	else
-	{
-		targetSpeed = MAX_SPEED * (distance / slowRad);
-	}
-	m_velocity = direction;
-	m_velocity = phys.normalise(m_velocity);
-	m_velocity = sf::Vector2f(m_velocity.x * targetSpeed, m_velocity.y * targetSpeed);
-	m_pos = sf::Vector2f(m_pos.x + m_velocity.x, m_pos.y + m_velocity.y);
 }
-void alien::pursue(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v)
+void alien::collisionManager(std::vector<sf::IntRect> r)
 {
-	sf::Vector2f direction = sf::Vector2f(pos.x - m_pos.x, pos.y - m_pos.y);
-	float distance = phys.length(direction);
-	float speed = phys.length(m_velocity);
-	float timePrediction = 0;
-	if (speed <= distance / maxTimePrediction)
+	for (int i = 0; i < r.size(); i++)
 	{
-		timePrediction = maxTimePrediction;
+		boundaryBullet(r.at(i));
 	}
-	else
-	{
-		timePrediction = distance / speed;
-	}
-	sf::Vector2f newTarget = sf::Vector2f((pos.x + v.x) * timePrediction, (pos.y + v.y) * timePrediction);
-	dynamicSeek(newTarget, t, rotation);
 }

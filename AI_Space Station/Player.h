@@ -28,14 +28,19 @@ public:
 	int currentBullets = 0;
 	float getRotation();
 
+	std::vector<sf::IntRect> Player::getRects();
+	void collisionManager(std::vector<sf::IntRect> r);
+
 private:
 
-sf::Vector2f m_velocity;
-sf::Texture m_texture;
-sf::Sprite m_spr;
+	sf::Vector2f m_velocity;
+	sf::Texture m_texture;
+	sf::Sprite m_spr;
 
-std::string m_file;
-void loadSprite();
-void boundary(sf::RenderWindow &w);
+	std::string m_file;
+	void loadSprite();
+	void boundary(sf::RenderWindow &w);
+	sf::IntRect myBox;
+	int hp = 10;
 
 };

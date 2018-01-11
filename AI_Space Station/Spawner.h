@@ -14,7 +14,9 @@ public:
 	void spawn();
 	void render(sf::RenderWindow &w);
 	void shoot(sf::Vector2f pos);
-
+	sf::IntRect myBox;
+	void collisionManager(std::vector<sf::IntRect> r);
+	std::vector<sf::IntRect> getRects();
 private:
 
 	sf::Vector2f m_pos;
@@ -41,5 +43,7 @@ private:
 	void rotationer();
 	
 	bool alive;
+	int hp = 10;
+	void isAlive();
 };
 

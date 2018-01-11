@@ -11,17 +11,13 @@ public:
 	alien(sf::Vector2f pos, sf::Vector2f vel, std::string file, int s, float maxSpeed, int health);
 	~alien();
 
-	void update(sf::RenderWindow &w);
+	void update();
 	void updateMovement(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v);
 	void render(sf::RenderWindow &w);
 	void createBehaviour(int s);
 	void dynamicWander(sf::Vector2f pos);
 	void dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation);
-	void dynamicFlee(sf::Vector2f pos, sf::Time t, float rotation);
-	void dynamicArrive(sf::Vector2f pos);
-	void pursue(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v);
 	
-
 	float angle = 0;
 	int behaviour = 0;
 	enum state { IDLE, WANDER, SEEK, FLEE, ARRIVE, PURSUE};
@@ -29,6 +25,8 @@ public:
 	bool alive = true;
 	int hp = 2;
 
+	sf::IntRect myBox;
+	void collisionManager(std::vector<sf::IntRect> r);
 
 protected:
 
@@ -60,7 +58,8 @@ protected:
 	float getNewOrientation(float orientation, sf::Vector2f v);
 	std::string m_file;
 	void loadSprite();
-	void boundary(sf::RenderWindow &w);
+	void boundaryBullet(sf::IntRect target);
 	BasicTypes phys;
 
+	void isAlive();
 };

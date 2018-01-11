@@ -26,6 +26,7 @@ private:
 	sf::RenderWindow m_window;
 	std::vector<Spawner*> spawners;
 	void keyController();
+	void CollisionManager();
 
 
 };

@@ -20,29 +20,29 @@ void Predator::shoot()
 		{
 			currentBullets++;
 			bullets.push_back(new Bullet(sf::Vector2f(m_pos.x, m_pos.y), "assets/predatorbullet.png", m_spr.getRotation()));
-			std::cout << "Fire" << std::endl;
 		}
 		gunTimer = 0;
 	}
 }
-void Predator::update(sf::RenderWindow &w)
+void Predator::update()
 {
 	shoot();
-	m_spr.setPosition(m_pos);
+	isAlive();
 	for (int i = 0; i < bullets.size(); i++)
 	{
 		if (bullets.at(i)->alive)
 		{
-			bullets.at(i)->update(w);
+			bullets.at(i)->update();
 		}
 		else
 		{
 			delete bullets.at(i);
-			bullets.erase(bullets.begin());
+			bullets.erase(bullets.begin() + i);
 			currentBullets--;
 		}
 	}
-
+	m_spr.setPosition(m_pos);
+	myBox = sf::IntRect(m_pos.x, m_pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
 }
 void Predator::render(sf::RenderWindow &w)
 {
@@ -54,4 +54,29 @@ void Predator::render(sf::RenderWindow &w)
 		}
 	}
 	w.draw(m_spr);
+}
+std::vector<sf::IntRect> Predator::getRects()
+{
+	std::vector<sf::IntRect> temp;
+
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		if (bullets.at(i)->alive)
+		{
+			temp.push_back(bullets.at(i)->getRect());
+		}
+	}
+	temp.push_back(myBox);
+	return temp;
+}
+void Predator::collisionManager(std::vector<sf::IntRect> r)
+{
+	for (int i = 0; i < r.size(); i++)
+	{
+		boundaryBullet(r.at(i));
+	}
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets.at(i)->collisionManager(r);
+	}
 }

@@ -6,7 +6,7 @@ class HomingMissiles :
 public:
 	HomingMissiles(sf::Vector2f pos, std::string file, float r);
 	~HomingMissiles();
-	void update(sf::RenderWindow &w, sf::Vector2f targetPos, sf::Time t, float rotation);
+	void update(sf::Vector2f targetPos, sf::Time t, float rotation);
 	void dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation);
 
 private:

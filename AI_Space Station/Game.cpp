@@ -8,6 +8,8 @@ Game::Game() :
 {
 	m_player.create(sf::Vector2f(300.0f, 300.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
+	spawners.push_back(new Spawner(sf::Vector2f(200, 100), "assets/spawner82.png", 3));
+	spawners.push_back(new Spawner(sf::Vector2f(400,900), "assets/spawner82.png", 3));
 }
 Game::~Game()
 {
@@ -48,8 +50,9 @@ void Game::update(sf::Time t)
 	{
 		spawners.at(i)->update(m_player.pos, m_window, t, m_player.getRotation(), m_player.getVelocity());
 	}
+	CollisionManager();
 	keyController();
-	
+
 }
 void Game::render()
 {
@@ -91,4 +94,13 @@ void Game::keyController()
 	{
 		m_player.setObjRotation(rotato);
 	}
+}
+void Game::CollisionManager()
+{
+	for (int i = 0; i < spawners.size(); i++)
+	{
+		spawners.at(i)->collisionManager(m_player.getRects());
+		m_player.collisionManager(spawners.at(i)->getRects());
+	}
+	
 }
