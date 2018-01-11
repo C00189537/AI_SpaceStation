@@ -13,6 +13,7 @@ Game::Game() :
 	m_player.create(sf::Vector2f(300.0f, 300.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
 	grid.initialise();
+	radar.initialise(&m_player.pos, grid.level);
 }
 Game::~Game()
 {
@@ -73,12 +74,13 @@ void Game::update(sf::Time t)
 	m_player.updateVelocity(speed);
 	for (int i = 0; i < spawners.size(); i++)
 	{
+
 		spawners.at(i)->update(m_player.pos, m_window, t, m_player.angle, m_player.getVelocity());
 	}
 	keyController();
 	camera.setCenter(m_player.pos); 
 	m_window.setView(camera); //comment out for full view
-
+	radar.update();
 }
 void Game::render()
 {
@@ -89,6 +91,7 @@ void Game::render()
 		spawners.at(i)->render(m_window);
 	}
 	m_player.render(m_window);
+	radar.render(m_window);
 	m_window.display();
 }
 

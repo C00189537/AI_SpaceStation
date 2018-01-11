@@ -27,6 +27,7 @@
     <ClCompile Include="HomingMissiles.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Radar.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>
@@ -38,6 +39,7 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="HomingMissiles.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Radar.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="Tile.h" />
   </ItemGroup>

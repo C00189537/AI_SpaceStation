@@ -5,7 +5,7 @@
 #include "alien.h"
 #include "Spawner.h"
 #include "Grid.h"
-
+#include "Radar.h"
 class Game {
 public:
 	
@@ -28,5 +28,5 @@ private:
 	std::vector<Spawner*> spawners;
 	void keyController();
 	sf::View camera;
-
+	Radar radar;
 };
