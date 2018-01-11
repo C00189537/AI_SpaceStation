@@ -6,10 +6,14 @@
 Game::Game() :
 	m_window{ sf::VideoMode{ 1920, 1080, 32 }, "AI Behaviours" }
 {
+	camera.setCenter(sf::Vector2f(0,0));
+	camera.setSize(sf::Vector2f(480,360));
+	camera.setViewport(sf::FloatRect(0, 0, 1, 1));
+
 	m_player.create(sf::Vector2f(300.0f, 300.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
-	spawners.push_back(new Spawner(sf::Vector2f(200, 100), "assets/spawner82.png", 3));
-	spawners.push_back(new Spawner(sf::Vector2f(400,900), "assets/spawner82.png", 3));
+	grid.initialise();
+	radar.initialise(&m_player.pos, grid.level);
 }
 Game::~Game()
 {
@@ -52,16 +56,21 @@ void Game::update(sf::Time t)
 	}
 	CollisionManager();
 	keyController();
+	camera.setCenter(m_player.pos); 
+	m_window.setView(camera); //comment out for full view
+	radar.update();
 
 }
 void Game::render()
 {
 	m_window.clear(sf::Color::Black);
+	grid.render(m_window);
 	for (int i = 0; i < spawners.size(); i++)
 	{
 		spawners.at(i)->render(m_window);
 	}
 	m_player.render(m_window);
+	radar.render(m_window);
 	m_window.display();
 }
 

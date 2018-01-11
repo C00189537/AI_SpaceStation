@@ -1,9 +1,20 @@
-﻿  Spawner.cpp
-c:\users\connor\desktop\ai_spacestation\ai_space station\spawner.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Predator.cpp
-c:\users\connor\desktop\ai_spacestation\ai_space station\predator.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  Tile.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\tile.cpp(10): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\tile.cpp(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\tile.cpp(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\tile.cpp(46): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\tile.cpp(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Radar.cpp
+  Player.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(81): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(85): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+  main.cpp
+  Grid.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\grid.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Game.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
+  LINK : C:\Users\Connor\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe not found or not built by the last incremental link; performing full link
   SFML.vcxproj -> C:\Users\Connor\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe
