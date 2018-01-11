@@ -34,28 +34,6 @@ void Game::run()
 				{
 					m_window.close();
 				}
-				/*if (sf::Keyboard::Up == event.key.code)
-				{
-					if (speed < m_player.MAX_SPEED)
-						speed += accel;
-				}
-				if (sf::Keyboard::Down == event.key.code)
-				{
-					if (speed > m_player.MIN_SPEED)
-						speed -= accel;
-				}
-				if (sf::Keyboard::Right == event.key.code)
-				{
-					m_player.setObjRotation(rotato);
-				}
-				if (sf::Keyboard::Left == event.key.code)
-				{
-					m_player.setObjRotation(-rotato);
-				}
-				if (sf::Keyboard::Space == event.key.code)
-				{
-					m_player.shoot();
-				}*/
 			}
 
 		}

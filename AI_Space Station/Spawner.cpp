@@ -55,7 +55,7 @@ void Spawner::spawn()
 	if (spawnCount < MAX_SPAWN)
 	{
 		spawnCount++;
-		predators.push_back(new alien(sf::Vector2f(m_pos.x, m_pos.y), sf::Vector2f(1, 1), "assets/predator32.png", 2, 5, 4));
+		predators.push_back(new Predator(sf::Vector2f(m_pos.x, m_pos.y), sf::Vector2f(1, 1), "assets/predator32.png", 2, 5, 4));
 	}
 }
 void Spawner::render(sf::RenderWindow &w)

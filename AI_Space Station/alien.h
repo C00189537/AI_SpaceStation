@@ -7,6 +7,7 @@ class alien
 {
 
 public:
+	alien(){}
 	alien(sf::Vector2f pos, sf::Vector2f vel, std::string file, int s, float maxSpeed, int health);
 	~alien();
 
@@ -19,7 +20,6 @@ public:
 	void dynamicFlee(sf::Vector2f pos, sf::Time t, float rotation);
 	void dynamicArrive(sf::Vector2f pos);
 	void pursue(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v);
-
 	
 
 	float angle = 0;
@@ -30,7 +30,7 @@ public:
 	int hp = 2;
 
 
-private:
+protected:
 
 	float m_orientation = 0;
 

@@ -7,6 +7,7 @@ Bullet::Bullet(sf::Vector2f pos, std::string file, float r) : m_pos(pos), m_file
 	alive = true;
 	loadSprite();
 	setObjRotation(r);
+	m_spr.setOrigin(m_spr.getGlobalBounds().width / 2, m_spr.getGlobalBounds().height / 2);
 }
 
 

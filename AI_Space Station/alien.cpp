@@ -124,10 +124,9 @@ void alien::dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation)
 	m_velocity = sf::Vector2f(m_velocity.x + steering.x * t.asSeconds(), m_velocity.y + steering.y * t.asSeconds());
 
 	//Linear acceleration
-	float rotato = phys.angularVel(rotation, m_rotation);
-	std::cout << rotato << std::endl;
-	m_rotation = m_spr.getRotation() + rotato * t.asSeconds();
-
+	float rotato = phys.angularVel(m_rotation, rotation);
+	m_rotation = m_spr.getRotation() + rotato * t.asSeconds() + 90;
+	
 
 	if (phys.length(m_velocity) > MAX_SPEED)
 	{
@@ -144,7 +143,8 @@ void alien::dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation)
 		m_rotation = -MAX_ROTATION;
 	}
 	m_pos = sf::Vector2f(m_pos.x + m_velocity.x, m_pos.y + m_velocity.y);
-	m_orientation = m_orientation + m_rotation * t.asSeconds();
+	m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
+	m_spr.setRotation(m_orientation);
 }
 void alien::dynamicFlee(sf::Vector2f pos, sf::Time t, float rotation)
 {
