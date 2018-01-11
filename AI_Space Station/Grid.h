@@ -47,9 +47,9 @@ public:
 	std::vector<std::shared_ptr<Tile>> map;
 	int tCount = 0;
 
+	int level[HEIGHT][WIDTH];
 private:
 	//LevelLoader lLoader;
-	int level[HEIGHT][WIDTH];
 	void load();
 
 };
