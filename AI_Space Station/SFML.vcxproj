@@ -29,6 +29,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Predator.cpp" />
     <ClCompile Include="Radar.cpp" />
+    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>
@@ -42,6 +43,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Predator.h" />
     <ClInclude Include="Radar.h" />
+    <ClInclude Include="Shield.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="Tile.h" />
   </ItemGroup>

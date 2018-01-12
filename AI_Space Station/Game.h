@@ -6,6 +6,7 @@
 #include "Spawner.h"
 #include "Grid.h"
 #include "Radar.h"
+#include "Shield.h"
 class Game {
 public:
 	
@@ -21,8 +22,8 @@ private:
 
 	Player m_player;
 	Grid grid;
-	int speed = 0;
-	int accel = 1;
+	float speed = 0;
+	float accel = 0.1f;
 	float rotato = 4.0f;
 	sf::RenderWindow m_window;
 	std::vector<Spawner*> spawners;
@@ -31,5 +32,8 @@ private:
 
 	sf::View camera;
 	Radar radar;
+	Shield shield1;
+	Shield shield2;
+	Shield shield3;
 
 };

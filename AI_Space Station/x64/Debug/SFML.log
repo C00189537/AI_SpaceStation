@@ -1,37 +1,6 @@
-﻿  Tile.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\tile.cpp(10): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\tile.cpp(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\tile.cpp(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\tile.cpp(46): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\tile.cpp(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Spawner.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\spawner.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Radar.cpp
-  Predator.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\predator.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Player.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(81): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(85): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-  main.cpp
-  HomingMissiles.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\homingmissiles.cpp(19): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-  Grid.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\grid.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Game.cpp
-  Bullet.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\bullet.cpp(11): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\bullet.cpp(33): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\bullet.cpp(35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  BasicTypes.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\basictypes.cpp(40): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\basictypes.cpp(43): warning C4305: '+=': truncation from 'double' to 'float'
-  alien.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\alien.cpp(12): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\alien.cpp(101): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\alien.cpp(105): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\alien.cpp(108): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+﻿  Player.cpp
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(163): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SFML.vcxproj -> C:\Users\froxe\Documents\git\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe
