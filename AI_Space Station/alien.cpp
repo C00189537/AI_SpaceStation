@@ -112,7 +112,18 @@ void alien::dynamicSeek(sf::Vector2f pos, sf::Time t, float rotation)
 }
 void alien::dynamicWander(sf::Vector2f pos)
 {
-
+	movetime++;
+	if (movetime > 50)
+	{
+		movetime = 0;
+		m_velocity = pos - m_pos;
+		m_velocity = phys.normalise(m_velocity);
+		m_orientation = m_orientation + MAX_ROTATION * (rand() % 2 - 2);
+		m_velocity = sf::Vector2f(-sin(m_orientation), cos(m_orientation))*MAX_SPEED;
+		m_pos = sf::Vector2f(m_pos.x + m_velocity.x, m_pos.y + m_velocity.y);
+		m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
+		m_spr.setRotation(m_orientation);
+	}
 }
 void alien::isAlive()
 {

@@ -17,25 +17,42 @@ Game::Game() :
 	spawners.push_back(new Spawner(sf::Vector2f(13 * 64, 13 * 64), "assets/spawner82.png", 3));
 
 	grid.initialise();
+	map = new Graph();
+	for (int x = 0; x < grid.WIDTH; x++)
+	{
+		for (int y = 0; y < grid.HEIGHT; y++)
+		{
+			if (grid.level[y][x] == 0)
+			{
+				map->AddNode(x, y, false);
+			}
+			else
+			{
+				map->AddNode(x, y, true);
+			}
+		}
+	}
+	map->GenerateGraph();
+	
 
-	workerSpawn[0] = sf::Vector2f(100, 100);
-	workerSpawn[1] = sf::Vector2f(200, 100);
-	workerSpawn[2] = sf::Vector2f(300, 100);
-	workerSpawn[3] = sf::Vector2f(400, 100);
-	workerSpawn[4] = sf::Vector2f(500, 100);
-	workerSpawn[5] = sf::Vector2f(600, 100);
-	workerSpawn[6] = sf::Vector2f(700, 100);
-	workerSpawn[7] = sf::Vector2f(800, 100);
-	workerSpawn[8] = sf::Vector2f(900, 100);
-	workerSpawn[9] = sf::Vector2f(1000, 100);
+	workerSpawn[0] = sf::Vector2f(64 *4, 64 * 2);
+	workerSpawn[1] = sf::Vector2f(64 * 6, 64 * 2);
+	workerSpawn[2] = sf::Vector2f(64 * 8, 64 * 2);
+	workerSpawn[3] = sf::Vector2f(64 * 10, 64 * 2);
+	workerSpawn[4] = sf::Vector2f(64 * 12, 64 * 2);
+	workerSpawn[5] = sf::Vector2f(64 * 14, 64 * 2);
+	workerSpawn[6] = sf::Vector2f(64 * 16, 64 * 2);
+	workerSpawn[7] = sf::Vector2f(64 * 18, 64 * 2);
+	workerSpawn[8] = sf::Vector2f(64 * 18, 64 * 4);
+	workerSpawn[9] = sf::Vector2f(64 * 11, 64 * 2);
 
 
 	for (int i = 0; i < 10; i++)
 	{
-		workers.push_back(new Worker(workerSpawn[i], sf::Vector2f(1, 1), "assets/worker48.png"));
+		workers.push_back(new Worker(workerSpawn[i], sf::Vector2f(1, 1), "assets/worker48.png", map));
 	}
 
-	sweepers.push_back(new Sweeper(sf::Vector2f(500, 500), sf::Vector2f(1, 1), "assets/sweeper32.png", 2, 2, 6));
+	sweepers.push_back(new Sweeper(sf::Vector2f(500, 500), sf::Vector2f(1, 1), "assets/sweeper32.png", 2, 1, 6));
 
 	shield1.initialise(sf::Vector2f(64 * 5, 64 * 5));
 	shield2.initialise(sf::Vector2f(64 * 16, 64 * 1));
@@ -117,6 +134,10 @@ void Game::update(sf::Time t)
 			{
 				sweepers.at(i)->updateMovement(workers.at(holder)->getPos(), t, workers.at(holder)->getRotation(), workers.at(holder)->getVelocity());
 			}
+			else
+			{
+				sweepers.at(i)->dynamicWander(m_player.pos);
+			}
 		}
 		else
 		{
@@ -130,7 +151,19 @@ void Game::update(sf::Time t)
 		if (workers.at(i)->alive)
 		{
 			workers.at(i)->update();
-			//workers.at(i)->updateVelocity();
+			for (int j = 0; j < sweepers.size(); j++)
+			{
+				if (checkDistance(workers.at(i)->getPos(), sweepers.at(j)->getPos()) <= 100)
+				{
+					std::cout << workers.at(i)->flee << std::endl;	
+					workers.at(i)->flee = true;
+				}
+				else
+				{
+					workers.at(i)->flee = false;
+				}
+			}
+			workers.at(i)->updateVelocity(m_player.pos, m_player.getRotation(), t);
 		}
 		else
 		{
@@ -208,11 +241,14 @@ void Game::collision()
 		spawners.at(i)->collisionManager(m_player.getRects());
 		m_player.collisionManager(spawners.at(i)->getRects());
 	}
+	std::vector<sf::IntRect> temp;
 	for (int i = 0; i < sweepers.size(); i++)
 	{
 		sweepers.at(i)->collisionManager(m_player.getRects());
-		m_player.collisionManager(spawners.at(i)->getRects()); //SHOULD THIS BE SWEEPERS?
+		temp.push_back(sweepers.at(i)->getRect());
 	}
+	m_player.collisionManager(temp); 
+	m_player.specialCollision(grid);
 
 
 	for (int i = 0; i < workers.size(); i++)

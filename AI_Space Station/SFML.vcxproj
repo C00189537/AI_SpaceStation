@@ -42,6 +42,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="HomingMissiles.h" />
     <ClInclude Include="Player.h" />

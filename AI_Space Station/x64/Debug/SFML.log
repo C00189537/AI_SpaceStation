@@ -1,1 +1,29 @@
-﻿  SFML.vcxproj -> C:\Users\Connor\Desktop\AI_Space Station\x64\Debug\SFML.exe
+﻿  main.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+  Spawner.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\spawner.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Predator.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\predator.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\player.cpp(182): warning C4305: 'argument': truncation from 'double' to 'float'
+  HomingMissiles.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\homingmissiles.cpp(19): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  Game.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(324): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(325): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Bullet.cpp
+c:\users\connor\desktop\ai_spacestation\ai_space station\bullet.cpp(11): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\bullet.cpp(35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\bullet.cpp(37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  LINK : C:\Users\Connor\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe not found or not built by the last incremental link; performing full link
+  SFML.vcxproj -> C:\Users\Connor\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe

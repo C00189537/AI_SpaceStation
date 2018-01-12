@@ -10,6 +10,8 @@
 #include "Radar.h"
 #include "Shield.h"
 #include "CollisionManager.h"
+#include "Graph.h"
+
 class Game {
 public:
 	
@@ -46,4 +48,6 @@ private:
 	Shield shield3;
 
 	CollisionManager cManager;
+	Graph * map;
+	void UI(sf::Vector2f pos);
 };

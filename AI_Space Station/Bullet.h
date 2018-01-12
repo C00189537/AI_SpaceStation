@@ -2,6 +2,8 @@
 #include <SFML\Graphics.hpp>
 #include "BasicTypes.h"
 #include <iostream>
+#include "Grid.h"
+#include "CollisionManager.h"
 class Bullet
 {
 public:
@@ -21,15 +23,14 @@ public:
 
 	sf::IntRect getRect();
 	void collisionManager(std::vector<sf::IntRect>);
+	void bounce(Grid &g);
+	
 
 protected:
 
 	sf::Vector2f m_velocity;
 	sf::Texture m_texture;
 	sf::Sprite m_spr;
-
-	sf::IntRect myBox;
-
 	std::string m_file;
 	void loadSprite();
 	void timeToLive(int t);
@@ -37,5 +38,8 @@ protected:
 	const int MAX_SPEED = 20;
 	const int MAX_ACCEL_LIN = 20;
 
+
+	sf::IntRect myBox;
+	CollisionManager cManager;
 };
 

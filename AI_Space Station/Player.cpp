@@ -166,6 +166,13 @@ void Player::collisionManager(std::vector<sf::IntRect> r)
 		bullets.at(i)->collisionManager(r);
 	}
 }
+void Player::specialCollision(Grid &g)
+{
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets.at(i)->bounce(g);
+	}
+}
 sf::IntRect Player::getRect()
 {
 	return myBox;
