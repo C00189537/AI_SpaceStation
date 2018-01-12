@@ -7,7 +7,7 @@ Tile::Tile(sf::Vector2f position, std::shared_ptr<sf::Texture> _wallTexture, std
 	wallTexture = _wallTexture;
 	defaultTexture = _defaultTexture;
 	m_TileSprite.setTexture(*defaultTexture);
-	m_TileSprite.setOrigin(defaultTexture->getSize().x / 2, defaultTexture->getSize().y / 2);
+	m_TileSprite.setOrigin(m_TileSprite.getGlobalBounds().width / 2, m_TileSprite.getGlobalBounds().height / 2);
 	m_TileSprite.setPosition(position.x, position.y);
 	bounds.top = position.y;
 	bounds.left = position.x;

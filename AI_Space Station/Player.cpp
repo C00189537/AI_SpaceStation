@@ -15,10 +15,12 @@ void Player::create(sf::Vector2f p, sf::Vector2f vel, std::string file)
 	m_velocity = vel;
 	m_file = file;
 	loadSprite();
-	m_spr.setOrigin(m_spr.getGlobalBounds().width / 2, m_spr.getGlobalBounds().height / 2);
 	angle = 20;
 	myBox = sf::IntRect(p.x, p.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
-	//std::cout << hp << std::endl;
+	healthMeter.setFillColor(sf::Color(0,255,0,180));
+	healthMeter.setSize(sf::Vector2f(60, 8));
+	std::cout << hp << std::endl;
+
 }
 void Player::loadSprite()
 {
@@ -28,7 +30,16 @@ void Player::loadSprite()
 		std::cout << "problem loading logo" << std::endl;
 	}
 	m_spr.setTexture(m_texture);
+	m_spr.setOrigin(m_spr.getGlobalBounds().width / 2, m_spr.getGlobalBounds().height / 2);
 	m_spr.setPosition(pos.x, pos.y);
+	if (!m_shieldTexture.loadFromFile("assets/Shield.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading logo" << std::endl;
+	}
+	m_shieldSpr.setTexture(m_shieldTexture);
+	m_shieldSpr.setOrigin(m_shieldSpr.getGlobalBounds().width / 2, m_shieldSpr.getGlobalBounds().height / 2);
+	m_shieldSpr.setPosition(pos.x, pos.y);
 }
 void Player::update()
 {
@@ -47,13 +58,14 @@ void Player::update()
 		}
 	}
 	myBox = sf::IntRect(pos.x, pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
-	//std::cout << workerCount << std::endl;
 
 }
-void Player::updateVelocity(int v)
+void Player::updateVelocity(float v)
 {
 	pos = sf::Vector2f(pos.x + cos(m_spr.getRotation() * 3.14159265 / 180) * v, pos.y + sin(m_spr.getRotation() * 3.14159265 / 180) * v);
 	m_spr.setPosition(pos);
+	m_shieldSpr.setPosition(pos);
+	healthMeter.setPosition(sf::Vector2f(pos.x - 32, pos.y + 16));
 }
 void Player::render(sf::RenderWindow &w)
 {
@@ -65,11 +77,35 @@ void Player::render(sf::RenderWindow &w)
 		}
 	}
 	w.draw(m_spr);
+	if (shieldApplied)
+	{
+		w.draw(m_shieldSpr);
+	}
+	w.draw(healthMeter);
 }
-
+void Player::boundary(sf::RenderWindow &w)
+{
+	if (m_spr.getPosition().x > 1280 - 64)
+	{
+		pos.x = 0;
+	}
+	else if (m_spr.getPosition().y > 1280 - 64)
+	{
+		pos.y = 0;
+	}
+	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width / 2 < 0)
+	{
+		pos.x = 1280 - 64;
+	}
+	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height / 2 < 0)
+	{
+		pos.y = 1280 - 64;
+	}
+}
 void Player::setObjRotation(float r)
 {
 	m_spr.setRotation(m_spr.getRotation() + r);
+	m_shieldSpr.setRotation(m_shieldSpr.getRotation() + r);
 }
 sf::Vector2f Player::getVelocity()
 {
@@ -107,7 +143,18 @@ void Player::collisionManager(std::vector<sf::IntRect> r)
 	{
 		if (r.at(i).intersects(myBox))
 		{
-			hp--;
+			if (shieldApplied)
+			{
+				shieldApplied = false;
+				healthMeter.setFillColor(sf::Color(0, 255, 0, 180));
+			}
+			else
+			{
+				hp--;
+				if (hp < 0)
+					hp = 0;
+				healthMeter.setSize(sf::Vector2f(10 * hp, 8));
+			}
 			std::cout << hp << std::endl;
 		}
 	}
@@ -130,4 +177,13 @@ void Player::collectWorkers(sf::IntRect target)
 void Player::addWorker(int w)
 {
 	workerCount += w;
+}
+bool Player::isShieldApplied()
+{
+	return shieldApplied;
+}
+void Player::applyShield()
+{
+	shieldApplied = true;
+	healthMeter.setFillColor(sf::Color(0, 255, 220, 180));
 }

@@ -51,10 +51,14 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Worker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sweeper.cpp">
+=======
+    <ClCompile Include="Shield.cpp">
+>>>>>>> master
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,10 +96,14 @@
     <ClInclude Include="Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Worker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sweeper.h">
+=======
+    <ClInclude Include="Shield.h">
+>>>>>>> master
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

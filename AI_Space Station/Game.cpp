@@ -12,8 +12,8 @@ Game::Game() :
 
 	m_player.create(sf::Vector2f(300.0f, 300.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
+
 	grid.initialise();
-	radar.initialise(&m_player.pos, grid.level);
 
 	workerSpawn[0] = sf::Vector2f(100, 100);
 	workerSpawn[1] = sf::Vector2f(200, 100);
@@ -33,6 +33,19 @@ Game::Game() :
 	}
 
 	sweepers.push_back(new Sweeper(sf::Vector2f(500, 500), sf::Vector2f(1, 1), "assets/sweeper32.png", 2, 2, 6));
+
+	shield1.initialise(sf::Vector2f(64 * 3, 64 * 5));
+	shield2.initialise(sf::Vector2f(64 * 16, 64 * 1));
+	shield3.initialise(sf::Vector2f(64 * 8, 64 * 16));
+	std::vector<sf::Vector2f> shields;
+	shields.push_back(shield1.pickup.getPosition());
+	shields.push_back(shield2.pickup.getPosition());
+	shields.push_back(shield3.pickup.getPosition());
+	std::vector<bool*> actives;
+	actives.push_back(shield1.isActive());
+	actives.push_back(shield2.isActive());
+	actives.push_back(shield3.isActive());
+	radar.initialise(&m_player.pos, grid.level, shields, actives);
 }
 Game::~Game()
 {
@@ -139,6 +152,9 @@ void Game::render()
 	{
 		sweepers.at(i)->render(m_window);
 	}
+	shield1.render(m_window);
+	shield2.render(m_window);
+	shield3.render(m_window);
 	m_player.render(m_window);
 	radar.render(m_window);
 	m_window.display();
@@ -203,7 +219,30 @@ void Game::CollisionManager()
 			sweepers.at(i)->workerCollision(workers.at(j)->getRect());
 		}
 	}
-	
+	if (m_player.getRect().intersects(sf::IntRect(shield1.pickup.getGlobalBounds())))
+	{
+		if (!m_player.isShieldApplied())
+		{
+			shield1.setActive(false);
+			m_player.applyShield();
+		}
+	}
+	else if (m_player.getRect().intersects(sf::IntRect(shield2.pickup.getGlobalBounds())))
+	{
+		if (!m_player.isShieldApplied())
+		{
+			shield2.setActive(false);
+			m_player.applyShield();
+		}
+	}
+	else if (m_player.getRect().intersects(sf::IntRect(shield3.pickup.getGlobalBounds())))
+	{
+		if (!m_player.isShieldApplied())
+		{
+			shield3.setActive(false);
+			m_player.applyShield();
+		}
+	}
 }
 double Game::checkDistance(sf::Vector2f myPos, sf::Vector2f targetPos)
 {
