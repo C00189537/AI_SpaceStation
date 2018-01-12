@@ -11,7 +11,10 @@ Game::Game() :
 	camera.setViewport(sf::FloatRect(0, 0, 1, 1));
 
 	m_player.create(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
-	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
+
+	spawners.push_back(new Spawner(sf::Vector2f(6 * 64, 13 * 64), "assets/spawner82.png", 3));
+	spawners.push_back(new Spawner(sf::Vector2f(13 * 64, 6 * 64), "assets/spawner82.png", 3));
+	spawners.push_back(new Spawner(sf::Vector2f(13 * 64, 13 * 64), "assets/spawner82.png", 3));
 
 	grid.initialise();
 
@@ -45,7 +48,12 @@ Game::Game() :
 	actives.push_back(shield1.isActive());
 	actives.push_back(shield2.isActive());
 	actives.push_back(shield3.isActive());
-	radar.initialise(&m_player.pos, grid.level, shields, actives);
+	std::vector<sf::Vector2f> spawnersPositions;
+	for (int i = 0; i < spawners.size(); i++)
+	{
+		spawnersPositions.push_back(spawners.at(i)->m_pos);
+	}
+	radar.initialise(&m_player.pos, grid.level, shields, actives, spawnersPositions);
 }
 Game::~Game()
 {
@@ -88,7 +96,7 @@ void Game::update(sf::Time t)
 	{
 		spawners.at(i)->update(m_player.pos, m_window, t, m_player.getRotation(), m_player.getVelocity());
 	}
-	
+
 	for (int i = 0; i < sweepers.size(); i++)
 	{
 		//Find the closest worker
@@ -203,8 +211,10 @@ void Game::collision()
 	for (int i = 0; i < sweepers.size(); i++)
 	{
 		sweepers.at(i)->collisionManager(m_player.getRects());
-		m_player.collisionManager(spawners.at(i)->getRects());
+		m_player.collisionManager(spawners.at(i)->getRects()); //SHOULD THIS BE SWEEPERS?
 	}
+
+
 	for (int i = 0; i < workers.size(); i++)
 	{
 		m_player.collectWorkers(workers.at(i)->getRect());

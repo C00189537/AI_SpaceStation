@@ -1,7 +1,4 @@
-﻿  Player.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\player.cpp(175): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  Game.cpp
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\game.cpp(288): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\game.cpp(289): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   SFML.vcxproj -> C:\Users\froxe\Documents\git\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe

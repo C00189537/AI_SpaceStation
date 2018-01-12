@@ -19,8 +19,8 @@ void Spawner::loadSprite()
 		std::cout << "problem loading logo" << std::endl;
 	}
 	m_spr.setTexture(m_texture);
-	m_spr.setPosition(m_pos.x, m_pos.y);
 	m_spr.setOrigin(m_spr.getGlobalBounds().height / 2, m_spr.getGlobalBounds().width / 2);
+	m_spr.setPosition(m_pos.x, m_pos.y);
 }
 void Spawner::update(sf::Vector2f targetPos, sf::RenderWindow &w, sf::Time t, float rotation, sf::Vector2f v)
 {
