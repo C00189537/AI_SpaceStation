@@ -1,14 +1,7 @@
 ﻿  Game.cpp
-c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(132): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(150): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(123): warning C4101: 'pTemp': unreferenced local variable
-c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(251): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(252): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-  Compiling...
-  main.cpp
-c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(132): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(150): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(123): warning C4101: 'pTemp': unreferenced local variable
-  Generating Code...
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(328): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(329): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   SFML.vcxproj -> C:\Users\Connor\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe

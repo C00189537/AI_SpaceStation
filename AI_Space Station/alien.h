@@ -54,12 +54,11 @@ protected:
 	int spawnTimer = 0;
 	int MAX_SPAWN = 2;
 
-
-	float getNewOrientation(float orientation, sf::Vector2f v);
 	std::string m_file;
 	void loadSprite();
 	void boundaryBullet(sf::IntRect target);
 	BasicTypes phys;
 
 	void isAlive();
+	int movetime = 0;
 };

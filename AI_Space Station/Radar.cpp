@@ -17,8 +17,9 @@ Radar::Radar()
 	m_background.setSize(sf::Vector2f(1 + 4 * 20, 1 + 4 * 20));
 	
 }
-void Radar::initialise(sf::Vector2f *playerPos, int _level[HEIGHT][WIDTH], std::vector<sf::Vector2f> shields, std::vector<bool*> &isShieldActive)
+void Radar::initialise(sf::Vector2f *playerPos, int _level[HEIGHT][WIDTH], std::vector<sf::Vector2f> shields, std::vector<bool*> &isShieldActive, std::vector<sf::Vector2f> spawnerPos)
 {
+	m_spawners = spawnerPos;
 	m_shields = shields;
 	m_isShieldActive = isShieldActive;
 	for (int i = 0; i < 3; i++)
@@ -26,6 +27,12 @@ void Radar::initialise(sf::Vector2f *playerPos, int _level[HEIGHT][WIDTH], std::
 		m_shieldSqaures.push_back(sf::RectangleShape(sf::Vector2f(3, 3)));
 		m_shieldSqaures.at(i).setFillColor(sf::Color::Blue);
 		
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		m_spawnerSquares.push_back(sf::RectangleShape(sf::Vector2f(3, 3)));
+		m_spawnerSquares.at(i).setFillColor(sf::Color::Red);
+
 	}
 	trackingPoint = playerPos;
 	for (int x = 0; x < WIDTH; x++)
@@ -61,6 +68,11 @@ void Radar::update()
 		m_shieldSqaures.at(i).setPosition(sf::Vector2f(trackingPoint->x + (480 / 2) - (WIDTH * 4) + ((std::floor(m_shields.at(i).x / 64 + 1) * 4)),
 			trackingPoint->y + (360 / 2) - (HEIGHT * 4) + ((std::floor(m_shields.at(i).y / 64 + 1) * 4))));
 	}
+	for (int i = 0; i < 3; i++)
+	{
+		m_spawnerSquares.at(i).setPosition(sf::Vector2f(trackingPoint->x + (480 / 2) - (WIDTH * 4) + ((std::floor(m_spawners.at(i).x / 64) * 4)),
+			trackingPoint->y + (360 / 2) - (HEIGHT * 4) + ((std::floor(m_spawners.at(i).y / 64) * 4))));
+	}
 }
 void Radar::render(sf::RenderWindow &window)
 {
@@ -78,6 +90,10 @@ void Radar::render(sf::RenderWindow &window)
 		{
 			window.draw(m_shieldSqaures.at(i));
 		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		window.draw(m_spawnerSquares.at(i));
 	}
 	window.draw(m_playerTracker);
 }

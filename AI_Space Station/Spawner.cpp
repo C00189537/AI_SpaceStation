@@ -19,8 +19,8 @@ void Spawner::loadSprite()
 		std::cout << "problem loading logo" << std::endl;
 	}
 	m_spr.setTexture(m_texture);
-	m_spr.setPosition(m_pos.x, m_pos.y);
 	m_spr.setOrigin(m_spr.getGlobalBounds().height / 2, m_spr.getGlobalBounds().width / 2);
+	m_spr.setPosition(m_pos.x, m_pos.y);
 }
 void Spawner::update(sf::Vector2f targetPos, sf::RenderWindow &w, sf::Time t, float rotation, sf::Vector2f v)
 {
@@ -70,7 +70,7 @@ void Spawner::spawn()
 	if (spawnCount < MAX_SPAWN)
 	{
 		spawnCount++;
-		predators.push_back(new Predator(sf::Vector2f(m_pos.x, m_pos.y), sf::Vector2f(1, 1), "assets/predator32.png", 2, 5, 4));
+		predators.push_back(new Predator(sf::Vector2f(m_pos.x, m_pos.y), sf::Vector2f(1, 1), "assets/predator32.png", 2, 2, 4));
 	}
 }
 void Spawner::render(sf::RenderWindow &w)

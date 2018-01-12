@@ -58,7 +58,7 @@ void Player::update()
 			currentBullets--;
 		}
 	}
-	myBox = sf::IntRect(pos.x, pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
+	myBox = sf::IntRect(pos.x + 16, pos.y + 16, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
 
 }
 void Player::updateVelocity(float v)
@@ -166,9 +166,20 @@ void Player::collisionManager(std::vector<sf::IntRect> r)
 		bullets.at(i)->collisionManager(r);
 	}
 }
+void Player::specialCollision(Grid &g)
+{
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets.at(i)->bounce(g);
+	}
+}
 sf::IntRect Player::getRect()
 {
 	return myBox;
+}
+void Player::bounce()
+{
+	setObjRotation(90 * (3.14/180));
 }
 void Player::collectWorkers(sf::IntRect target)
 {
@@ -189,4 +200,11 @@ void Player::applyShield()
 {
 	shieldApplied = true;
 	healthMeter.setFillColor(sf::Color(0, 255, 220, 180));
+}
+void Player::setPosition(sf::Vector2f newPos)
+{
+	pos = newPos;
+	m_spr.setPosition(pos);
+	m_shieldSpr.setPosition(pos);
+	healthMeter.setPosition(sf::Vector2f(pos.x - 32, pos.y + 16));
 }

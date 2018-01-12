@@ -1,5 +1,6 @@
 #ifndef GRAPH_H
 #define GRAPH_H
+
 #include <iostream>
 #include <queue>
 #include <list>
@@ -82,8 +83,6 @@ public:
 				}
 			}
 		}
-
-		int x = 9;
 
 	}
 

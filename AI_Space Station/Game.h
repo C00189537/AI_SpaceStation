@@ -9,6 +9,7 @@
 #include "Grid.h"
 #include "Radar.h"
 #include "Shield.h"
+#include "CollisionManager.h"
 #include "Graph.h"
 class Game {
 public:
@@ -27,12 +28,12 @@ private:
 	Player m_player;
 	Grid grid;
 	float speed = 0;
-	float accel = 0.1f;
+	float accel = 0.025f;
 	float rotato = 4.0f;
 	sf::RenderWindow m_window;
 	std::vector<Spawner*> spawners;
 	void keyController();
-	void CollisionManager();
+	void collision();
 
 	std::vector<Worker*> workers;
 	sf::Vector2f workerSpawn[10];
@@ -45,6 +46,7 @@ private:
 	Shield shield2;
 	Shield shield3;
 
+	CollisionManager cManager;
 	Graph * map;
-
+	void UI(sf::Vector2f pos);
 };

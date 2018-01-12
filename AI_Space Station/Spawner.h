@@ -17,9 +17,10 @@ public:
 	sf::IntRect myBox;
 	void collisionManager(std::vector<sf::IntRect> r);
 	std::vector<sf::IntRect> getRects();
-private:
 
 	sf::Vector2f m_pos;
+private:
+
 	sf::Texture m_texture;
 	sf::Sprite m_spr;
 

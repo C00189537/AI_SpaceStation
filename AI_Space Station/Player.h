@@ -20,7 +20,7 @@ public:
 	void shoot();
 	sf::Vector2f getVelocity();
 
-	float MAX_SPEED = 3.f;
+	float MAX_SPEED = 4.f;
 	float MIN_SPEED = 0;
 	float angle = 20;
 	sf::Vector2f pos;
@@ -33,10 +33,13 @@ public:
 	std::vector<sf::IntRect> getRects();
 	void collectWorkers(sf::IntRect target);
 	void collisionManager(std::vector<sf::IntRect> r);
+	void specialCollision(Grid &g);
 	void addWorker(int w);
 	sf::IntRect getRect();
 	bool isShieldApplied();
 	void applyShield();
+	void bounce();
+	void setPosition(sf::Vector2f newPos);
 private:
 
 	sf::Vector2f m_velocity;

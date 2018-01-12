@@ -22,6 +22,7 @@
     <ClCompile Include="alien.cpp" />
     <ClCompile Include="BasicTypes.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HomingMissiles.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="alien.h" />
     <ClInclude Include="BasicTypes.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Grid.h" />
