@@ -15,6 +15,25 @@ Game::Game() :
 
 	grid.initialise();
 
+	workerSpawn[0] = sf::Vector2f(100, 100);
+	workerSpawn[1] = sf::Vector2f(200, 100);
+	workerSpawn[2] = sf::Vector2f(300, 100);
+	workerSpawn[3] = sf::Vector2f(400, 100);
+	workerSpawn[4] = sf::Vector2f(500, 100);
+	workerSpawn[5] = sf::Vector2f(600, 100);
+	workerSpawn[6] = sf::Vector2f(700, 100);
+	workerSpawn[7] = sf::Vector2f(800, 100);
+	workerSpawn[8] = sf::Vector2f(900, 100);
+	workerSpawn[9] = sf::Vector2f(1000, 100);
+
+
+	for (int i = 0; i < 10; i++)
+	{
+		workers.push_back(new Worker(workerSpawn[i], sf::Vector2f(1, 1), "assets/worker48.png"));
+	}
+
+	sweepers.push_back(new Sweeper(sf::Vector2f(500, 500), sf::Vector2f(1, 1), "assets/sweeper32.png", 2, 2, 6));
+
 	shield1.initialise(sf::Vector2f(64 * 3, 64 * 5));
 	shield2.initialise(sf::Vector2f(64 * 16, 64 * 1));
 	shield3.initialise(sf::Vector2f(64 * 8, 64 * 16));
@@ -61,12 +80,55 @@ void Game::run()
 }
 void Game::update(sf::Time t)
 {
-	m_player.update(m_window);
+	m_player.update();
 	m_player.updateVelocity(speed);
 	for (int i = 0; i < spawners.size(); i++)
 	{
 		spawners.at(i)->update(m_player.pos, m_window, t, m_player.getRotation(), m_player.getVelocity());
 	}
+	
+	for (int i = 0; i < sweepers.size(); i++)
+	{
+		//Find the closest worker
+		int holder = 0;
+		double distance = 1000;
+		for (int j = 0; j < workers.size(); j++)
+		{
+			double temp = checkDistance(sweepers.at(i)->getPos(), workers.at(i)->getPos());
+			if (temp < distance)
+			{
+				holder = j;
+			}
+		}
+		if (sweepers.at(i)->alive)
+		{
+			sweepers.at(i)->update();
+			if (workers.size() != 0)
+			{
+				sweepers.at(i)->updateMovement(workers.at(holder)->getPos(), t, workers.at(holder)->getRotation(), workers.at(holder)->getVelocity());
+			}
+		}
+		else
+		{
+			m_player.addWorker(sweepers.at(i)->workerCount);
+			delete sweepers.at(i);
+			sweepers.erase(sweepers.begin() + i);
+		}
+	}
+	for (int  i = 0; i < workers.size(); i++)
+	{
+		if (workers.at(i)->alive)
+		{
+			workers.at(i)->update();
+			//workers.at(i)->updateVelocity();
+		}
+		else
+		{
+			delete workers.at(i);
+			workers.erase(workers.begin() + i);
+		}
+	}
+
 	CollisionManager();
 	keyController();
 	camera.setCenter(m_player.pos); 
@@ -81,6 +143,14 @@ void Game::render()
 	for (int i = 0; i < spawners.size(); i++)
 	{
 		spawners.at(i)->render(m_window);
+	}
+	for (int i = 0; i < workers.size(); i++)
+	{
+		workers.at(i)->render(m_window);
+	}
+	for (int i = 0; i < sweepers.size(); i++)
+	{
+		sweepers.at(i)->render(m_window);
 	}
 	shield1.render(m_window);
 	shield2.render(m_window);
@@ -127,6 +197,28 @@ void Game::CollisionManager()
 		spawners.at(i)->collisionManager(m_player.getRects());
 		m_player.collisionManager(spawners.at(i)->getRects());
 	}
+	for (int i = 0; i < sweepers.size(); i++)
+	{
+		sweepers.at(i)->collisionManager(m_player.getRects());
+		m_player.collisionManager(spawners.at(i)->getRects());
+	}
+	for (int i = 0; i < workers.size(); i++)
+	{
+		m_player.collectWorkers(workers.at(i)->getRect());
+		workers.at(i)->collisionManager(m_player.getRect());
+
+		for (int j = 0; j < sweepers.size(); j++)
+		{
+			workers.at(i)->collisionManager(sweepers.at(j)->getRect());
+		}
+	}
+	for (int i = 0; i < sweepers.size(); i++)
+	{
+		for (int j = 0; j < workers.size(); j++)
+		{
+			sweepers.at(i)->workerCollision(workers.at(j)->getRect());
+		}
+	}
 	if (m_player.getRect().intersects(sf::IntRect(shield1.pickup.getGlobalBounds())))
 	{
 		if (!m_player.isShieldApplied())
@@ -151,4 +243,11 @@ void Game::CollisionManager()
 			m_player.applyShield();
 		}
 	}
+}
+double Game::checkDistance(sf::Vector2f myPos, sf::Vector2f targetPos)
+{
+	int distancex = (targetPos.x - myPos.x) * (targetPos.x - myPos.x);
+	int distancey = (targetPos.y - myPos.y) * (targetPos.y - myPos.y);
+
+	return sqrt(distancex - distancey);
 }

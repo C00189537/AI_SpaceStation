@@ -3,7 +3,9 @@
 
 #include "Player.h"
 #include "alien.h"
+#include "Worker.h"
 #include "Spawner.h"
+#include "Sweeper.h"
 #include "Grid.h"
 #include "Radar.h"
 #include "Shield.h"
@@ -18,6 +20,7 @@ private:
 
 	void update(sf::Time t);
 	void render();
+	double checkDistance(sf::Vector2f myPos, sf::Vector2f targetPos);
 	//void processEvents();
 
 	Player m_player;
@@ -29,6 +32,11 @@ private:
 	std::vector<Spawner*> spawners;
 	void keyController();
 	void CollisionManager();
+
+	std::vector<Worker*> workers;
+	sf::Vector2f workerSpawn[10];
+
+	std::vector<Sweeper*> sweepers;
 
 	sf::View camera;
 	Radar radar;

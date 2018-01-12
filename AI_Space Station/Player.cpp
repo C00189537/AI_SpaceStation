@@ -20,6 +20,7 @@ void Player::create(sf::Vector2f p, sf::Vector2f vel, std::string file)
 	healthMeter.setFillColor(sf::Color(0,255,0,180));
 	healthMeter.setSize(sf::Vector2f(60, 8));
 	std::cout << hp << std::endl;
+
 }
 void Player::loadSprite()
 {
@@ -40,9 +41,8 @@ void Player::loadSprite()
 	m_shieldSpr.setOrigin(m_shieldSpr.getGlobalBounds().width / 2, m_shieldSpr.getGlobalBounds().height / 2);
 	m_shieldSpr.setPosition(pos.x, pos.y);
 }
-void Player::update(sf::RenderWindow &w)
+void Player::update()
 {
-	boundary(w);
 	angle = m_spr.getRotation();
 	for (int i = 0; i < bullets.size(); i++)
 	{
@@ -58,7 +58,7 @@ void Player::update(sf::RenderWindow &w)
 		}
 	}
 	myBox = sf::IntRect(pos.x, pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
-	
+
 }
 void Player::updateVelocity(float v)
 {
@@ -93,16 +93,14 @@ void Player::boundary(sf::RenderWindow &w)
 	{
 		pos.y = 0;
 	}
-	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width /2 < 0)
+	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width / 2 < 0)
 	{
-		pos.x =1280-64;
+		pos.x = 1280 - 64;
 	}
-	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height /2 < 0)
+	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height / 2 < 0)
 	{
-		pos.y =1280-64;
+		pos.y = 1280 - 64;
 	}
-
-	m_spr.setPosition(pos);
 }
 void Player::setObjRotation(float r)
 {
@@ -123,7 +121,6 @@ void Player::shoot()
 	{
 		currentBullets++;
 		bullets.push_back(new Bullet(sf::Vector2f(pos.x, pos.y), "assets/playerbullet.png", m_spr.getRotation()));
-		std::cout << "Fire" << std::endl;
 	}
 }
 std::vector<sf::IntRect> Player::getRects()
@@ -139,10 +136,6 @@ std::vector<sf::IntRect> Player::getRects()
 	}
 	temp.push_back(myBox);
 	return temp;
-}
-sf::IntRect Player::getRect()
-{
-	return myBox;
 }
 void Player::collisionManager(std::vector<sf::IntRect> r)
 {
@@ -169,6 +162,21 @@ void Player::collisionManager(std::vector<sf::IntRect> r)
 	{
 		bullets.at(i)->collisionManager(r);
 	}
+}
+sf::IntRect Player::getRect()
+{
+	return myBox;
+}
+void Player::collectWorkers(sf::IntRect target)
+{
+	if (target.intersects(myBox))
+	{
+		workerCount++;
+	}
+}
+void Player::addWorker(int w)
+{
+	workerCount += w;
 }
 bool Player::isShieldApplied()
 {

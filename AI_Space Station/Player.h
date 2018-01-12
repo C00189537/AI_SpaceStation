@@ -10,8 +10,10 @@ public:
 	Player();
 	~Player();
 
-	void update(sf::RenderWindow &w);
+
+	void update();
 	void updateVelocity(float v);
+
 	void render(sf::RenderWindow &w);
 	void create(sf::Vector2f p, sf::Vector2f vel, std::string file);
 	void setObjRotation(float r);
@@ -28,9 +30,11 @@ public:
 	int currentBullets = 0;
 	float getRotation();
 
-	std::vector<sf::IntRect> Player::getRects();
-	sf::IntRect Player::getRect();
+	std::vector<sf::IntRect> getRects();
+	void collectWorkers(sf::IntRect target);
 	void collisionManager(std::vector<sf::IntRect> r);
+	void addWorker(int w);
+	sf::IntRect getRect();
 	bool isShieldApplied();
 	void applyShield();
 private:
@@ -41,11 +45,13 @@ private:
 	sf::Texture m_shieldTexture;
 	sf::Sprite m_shieldSpr;
 	sf::RectangleShape healthMeter;
-
 	std::string m_file;
 	void loadSprite();
-	void boundary(sf::RenderWindow &w);
 	sf::IntRect myBox;
 	int hp = 10;
+	int workerCount = 0;
 	bool shieldApplied = false;
+	void boundary(sf::RenderWindow &w);
+
+
 };
