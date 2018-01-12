@@ -20,7 +20,7 @@ public:
 	void shoot();
 	sf::Vector2f getVelocity();
 
-	float MAX_SPEED = 2.f;
+	float MAX_SPEED = 3.f;
 	float MIN_SPEED = 0;
 	float angle = 20;
 	sf::Vector2f pos;
@@ -51,7 +51,8 @@ private:
 	int hp = 10;
 	int workerCount = 0;
 	bool shieldApplied = false;
-	void boundary(sf::RenderWindow &w);
+	void boundary();
+	int cooldown = 0;
 
 
 };
