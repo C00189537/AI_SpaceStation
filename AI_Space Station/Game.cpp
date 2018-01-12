@@ -232,7 +232,7 @@ void Game::collision()
 			sweepers.at(i)->workerCollision(workers.at(j)->getRect());
 		}
 	}
-	if (m_player.getRect().intersects(sf::IntRect(shield1.pickup.getGlobalBounds())) && shield1.isActive())
+	if (m_player.getRect().intersects(sf::IntRect(shield1.pickup.getGlobalBounds())) && *shield1.isActive())
 	{
 		if (!m_player.isShieldApplied())
 		{
@@ -240,7 +240,7 @@ void Game::collision()
 			m_player.applyShield();
 		}
 	}
-	else if (m_player.getRect().intersects(sf::IntRect(shield2.pickup.getGlobalBounds())) && shield2.isActive())
+	else if (m_player.getRect().intersects(sf::IntRect(shield2.pickup.getGlobalBounds())) && *shield2.isActive())
 	{
 		if (!m_player.isShieldApplied())
 		{
@@ -248,7 +248,7 @@ void Game::collision()
 			m_player.applyShield();
 		}
 	}
-	else if (m_player.getRect().intersects(sf::IntRect(shield3.pickup.getGlobalBounds())) && shield3.isActive())
+	else if (m_player.getRect().intersects(sf::IntRect(shield3.pickup.getGlobalBounds())) && *shield3.isActive())
 	{
 		if (!m_player.isShieldApplied())
 		{
