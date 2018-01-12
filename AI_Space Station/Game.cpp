@@ -14,6 +14,7 @@ Game::Game() :
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
 
 	grid.initialise();
+	map = new Graph();
 
 	workerSpawn[0] = sf::Vector2f(100, 100);
 	workerSpawn[1] = sf::Vector2f(200, 100);
@@ -46,6 +47,7 @@ Game::Game() :
 	actives.push_back(shield2.isActive());
 	actives.push_back(shield3.isActive());
 	radar.initialise(&m_player.pos, grid.level, shields, actives);
+
 }
 Game::~Game()
 {

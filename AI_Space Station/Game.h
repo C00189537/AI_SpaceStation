@@ -9,6 +9,7 @@
 #include "Grid.h"
 #include "Radar.h"
 #include "Shield.h"
+#include "Graph.h"
 class Game {
 public:
 	
@@ -43,5 +44,7 @@ private:
 	Shield shield1;
 	Shield shield2;
 	Shield shield3;
+
+	Graph * map;
 
 };

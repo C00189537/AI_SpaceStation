@@ -1,8 +1,14 @@
 ﻿  Game.cpp
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\game.cpp(249): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\froxe\documents\git\ai_spacestation\ai_space station\game.cpp(250): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(132): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(150): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(123): warning C4101: 'pTemp': unreferenced local variable
+c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(251): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\game.cpp(252): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Generating Code...
-  Skipping... (no relevant changes detected)
+  Compiling...
   main.cpp
-  Player.cpp
-  SFML.vcxproj -> C:\Users\froxe\Documents\git\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(132): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(150): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\connor\desktop\ai_spacestation\ai_space station\graph.h(123): warning C4101: 'pTemp': unreferenced local variable
+  Generating Code...
+  SFML.vcxproj -> C:\Users\Connor\Desktop\AI_SpaceStation\AI_Space Station\x64\Debug\SFML.exe

@@ -40,6 +40,7 @@
     <ClInclude Include="BasicTypes.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="HomingMissiles.h" />
     <ClInclude Include="Player.h" />
