@@ -174,7 +174,7 @@ void Game::update(sf::Time t)
 
 	
 	camera.setCenter(m_player.pos); 
-	//m_window.setView(camera); //comment out for full view
+	m_window.setView(camera); //comment out for full view
 	radar.update();
 
 }
