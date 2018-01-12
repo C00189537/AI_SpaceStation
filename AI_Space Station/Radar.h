@@ -28,7 +28,7 @@ public:
 	/// Updates the object
 	///
 	////////////////////////////////////////////////////////////
-	void initialise(sf::Vector2f *playerPos, int _level[HEIGHT][WIDTH], std::vector<sf::Vector2f> shields, std::vector<bool*> &isShieldActive);
+	void initialise(sf::Vector2f *playerPos, int _level[HEIGHT][WIDTH], std::vector<sf::Vector2f> shields, std::vector<bool*> &isShieldActive, std::vector<sf::Vector2f> spawnerPos);
 	void update();
 
 	////////////////////////////////////////////////////////////
@@ -44,7 +44,9 @@ private:
 	sf::RectangleShape m_background;
 	sf::Vector2f *trackingPoint;
 	std::vector<sf::Vector2f> m_shields;
+	std::vector<sf::Vector2f> m_spawners;
 	std::vector<sf::RectangleShape> m_shieldSqaures;
+	std::vector<sf::RectangleShape> m_spawnerSquares;
 	std::vector<bool*> m_isShieldActive;
 };
 #endif;

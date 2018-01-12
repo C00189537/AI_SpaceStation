@@ -37,6 +37,8 @@ public:
 	sf::IntRect getRect();
 	bool isShieldApplied();
 	void applyShield();
+	void bounce();
+	void setPosition(sf::Vector2f newPos);
 private:
 
 	sf::Vector2f m_velocity;
