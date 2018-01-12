@@ -10,7 +10,7 @@ Game::Game() :
 	camera.setSize(sf::Vector2f(528,396));
 	camera.setViewport(sf::FloatRect(0, 0, 1, 1));
 
-	m_player.create(sf::Vector2f(64, 64), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
+	m_player.create(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(1.0f, 0.0f), "assets/player32.png");
 
 	spawners.push_back(new Spawner(sf::Vector2f(6 * 64, 13 * 64), "assets/spawner82.png", 3));
 	spawners.push_back(new Spawner(sf::Vector2f(13 * 64, 6 * 64), "assets/spawner82.png", 3));
@@ -250,6 +250,7 @@ void Game::collision()
 	m_player.collisionManager(temp); 
 	m_player.specialCollision(grid);
 
+
 	for (int i = 0; i < workers.size(); i++)
 	{
 		m_player.collectWorkers(workers.at(i)->getRect());
@@ -307,17 +308,12 @@ void Game::collision()
 						if (std::abs(offsetX) > std::abs(offsetY))
 						{
 							m_player.setPosition(sf::Vector2f(m_player.pos.x, m_player.pos.y += offsetY));
-							std::cout << m_player.pos.x << std::endl;
 						}
 						else
 						{
 							m_player.setPosition(sf::Vector2f(m_player.pos.x += offsetX, m_player.pos.y ));
 						}
 					}
-				}
-				for (int l = 0; l < workers.size(); l++)
-				{
-
 				}
 			}
 		}

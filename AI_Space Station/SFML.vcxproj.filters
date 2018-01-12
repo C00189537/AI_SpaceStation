@@ -108,9 +108,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
+<<<<<<< HEAD
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
+=======
+>>>>>>> Master
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

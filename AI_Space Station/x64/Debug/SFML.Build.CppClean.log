@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 c:\users\connor\desktop\ai_spacestation\ai_space station\x64\debug\vc141.pdb
 c:\users\connor\desktop\ai_spacestation\ai_space station\x64\debug\vc141.idb
 c:\users\connor\desktop\ai_spacestation\ai_space station\x64\debug\alien.obj
@@ -25,3 +26,32 @@ c:\users\connor\desktop\ai_spacestation\ai_space station\x64\debug\sfml.tlog\cl.
 c:\users\connor\desktop\ai_spacestation\ai_space station\x64\debug\sfml.tlog\link.command.1.tlog
 c:\users\connor\desktop\ai_spacestation\ai_space station\x64\debug\sfml.tlog\link.read.1.tlog
 c:\users\connor\desktop\ai_spacestation\ai_space station\x64\debug\sfml.tlog\link.write.1.tlog
+=======
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\vc141.pdb
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\vc141.idb
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\alien.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\basictypes.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\bullet.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\game.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\grid.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\homingmissiles.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\main.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\player.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\predator.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\radar.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\shield.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\spawner.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sweeper.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\tile.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\worker.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\collisionmanager.obj
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.exe
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.ilk
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.pdb
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.tlog\cl.command.1.tlog
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.tlog\cl.read.1.tlog
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.tlog\cl.write.1.tlog
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.tlog\link.command.1.tlog
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.tlog\link.read.1.tlog
+c:\users\froxe\documents\git\ai_spacestation\ai_space station\x64\debug\sfml.tlog\link.write.1.tlog
+>>>>>>> Master
