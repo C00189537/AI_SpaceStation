@@ -14,7 +14,7 @@ public:
 	//void create(sf::Vector2f pos, std::string file);
 	void setObjRotation(float r);
 
-	float speed = 20;
+	float speed = 10;
 	float angle = 0;
 	sf::Vector2f m_pos;
 	bool alive;

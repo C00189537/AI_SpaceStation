@@ -43,6 +43,7 @@ void Player::loadSprite()
 }
 void Player::update()
 {
+	boundary();
 	angle = m_spr.getRotation();
 	for (int i = 0; i < bullets.size(); i++)
 	{
@@ -83,7 +84,7 @@ void Player::render(sf::RenderWindow &w)
 	}
 	w.draw(healthMeter);
 }
-void Player::boundary(sf::RenderWindow &w)
+void Player::boundary()
 {
 	if (m_spr.getPosition().x > 1280 - 64)
 	{
@@ -117,8 +118,10 @@ float Player::getRotation()
 }
 void Player::shoot()
 {
-	if (currentBullets < MAX_BULLETS)
+	cooldown--;
+	if (currentBullets < MAX_BULLETS && cooldown <= 0)
 	{
+		cooldown = 20;
 		currentBullets++;
 		bullets.push_back(new Bullet(sf::Vector2f(pos.x, pos.y), "assets/playerbullet.png", m_spr.getRotation()));
 	}

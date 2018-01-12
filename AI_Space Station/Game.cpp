@@ -168,24 +168,24 @@ void Game::keyController()
 		m_player.shoot();
 	}
 	//Accelerate
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 	{
 		if (speed < m_player.MAX_SPEED)
 			speed += accel;
 	}
 	//Deccelerate
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 	{
 		if (speed > m_player.MIN_SPEED)
 			speed -= accel;
 	}
 	//Left
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
 		m_player.setObjRotation(-rotato);
 	}
 	//Right
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 	{
 		m_player.setObjRotation(rotato);
 	}
