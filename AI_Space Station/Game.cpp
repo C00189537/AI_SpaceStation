@@ -14,6 +14,23 @@ Game::Game() :
 	spawners.push_back(new Spawner(sf::Vector2f(800, 500), "assets/spawner82.png", 3));
 	grid.initialise();
 	radar.initialise(&m_player.pos, grid.level);
+
+	workerSpawn[0] = sf::Vector2f(100, 100);
+	workerSpawn[1] = sf::Vector2f(200, 100);
+	workerSpawn[2] = sf::Vector2f(300, 100);
+	workerSpawn[3] = sf::Vector2f(400, 100);
+	workerSpawn[4] = sf::Vector2f(500, 100);
+	workerSpawn[5] = sf::Vector2f(600, 100);
+	workerSpawn[6] = sf::Vector2f(700, 100);
+	workerSpawn[7] = sf::Vector2f(800, 100);
+	workerSpawn[8] = sf::Vector2f(900, 100);
+	workerSpawn[9] = sf::Vector2f(1000, 100);
+
+	for (int i = 0; i < 10; i++)
+	{
+		workers.push_back(new Worker(workerSpawn[i], sf::Vector2f(1, 1), "assets/worker48.png"));
+	}
+
 }
 Game::~Game()
 {
@@ -48,12 +65,26 @@ void Game::run()
 }
 void Game::update(sf::Time t)
 {
-	m_player.update(m_window);
+	m_player.update();
 	m_player.updateVelocity(speed);
 	for (int i = 0; i < spawners.size(); i++)
 	{
 		spawners.at(i)->update(m_player.pos, m_window, t, m_player.getRotation(), m_player.getVelocity());
 	}
+	for (int  i = 0; i < workers.size(); i++)
+	{
+		if (workers.at(i)->alive)
+		{
+			workers.at(i)->update();
+			//workers.at(i)->updateVelocity();
+		}
+		else
+		{
+			delete workers.at(i);
+			workers.erase(workers.begin() + i);
+		}
+	}
+
 	CollisionManager();
 	keyController();
 	camera.setCenter(m_player.pos); 
@@ -68,6 +99,10 @@ void Game::render()
 	for (int i = 0; i < spawners.size(); i++)
 	{
 		spawners.at(i)->render(m_window);
+	}
+	for (int i = 0; i < workers.size(); i++)
+	{
+		workers.at(i)->render(m_window);
 	}
 	m_player.render(m_window);
 	radar.render(m_window);
@@ -110,6 +145,11 @@ void Game::CollisionManager()
 	{
 		spawners.at(i)->collisionManager(m_player.getRects());
 		m_player.collisionManager(spawners.at(i)->getRects());
+	}
+	for (int i = 0; i < workers.size(); i++)
+	{
+		m_player.collectWorkers(workers.at(i)->getRect());
+		workers.at(i)->collisionManager(m_player.getRect());
 	}
 	
 }

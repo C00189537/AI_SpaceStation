@@ -31,6 +31,7 @@
     <ClCompile Include="Radar.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Worker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien.h" />
@@ -44,6 +45,7 @@
     <ClInclude Include="Radar.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="Worker.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

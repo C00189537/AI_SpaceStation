@@ -10,7 +10,7 @@ public:
 	Player();
 	~Player();
 
-	void update(sf::RenderWindow &w);
+	void update();
 	void updateVelocity(int v);
 	void render(sf::RenderWindow &w);
 	void create(sf::Vector2f p, sf::Vector2f vel, std::string file);
@@ -29,6 +29,8 @@ public:
 	float getRotation();
 
 	std::vector<sf::IntRect> Player::getRects();
+	sf::IntRect getRect();
+	void collectWorkers(sf::IntRect target);
 	void collisionManager(std::vector<sf::IntRect> r);
 
 private:
@@ -39,8 +41,8 @@ private:
 
 	std::string m_file;
 	void loadSprite();
-	void boundary(sf::RenderWindow &w);
 	sf::IntRect myBox;
 	int hp = 10;
+	int workerCount = 0;
 
 };

@@ -133,7 +133,10 @@ std::vector<sf::IntRect> Spawner::getRects()
 {
 	std::vector<sf::IntRect> temp;
 	//Spawner hitbox
-	temp.push_back(myBox);
+	if (alive)
+	{
+		temp.push_back(myBox);
+	}
 	//homing missile hitbox
 	for (int i = 0; i < bullets.size(); i++)
 	{

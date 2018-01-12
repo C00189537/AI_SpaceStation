@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include "alien.h"
+#include "Worker.h"
 #include "Spawner.h"
 #include "Grid.h"
 #include "Radar.h"
@@ -28,6 +29,9 @@ private:
 	std::vector<Spawner*> spawners;
 	void keyController();
 	void CollisionManager();
+
+	std::vector<Worker*> workers;
+	sf::Vector2f workerSpawn[10];
 
 	sf::View camera;
 	Radar radar;

@@ -30,9 +30,8 @@ void Player::loadSprite()
 	m_spr.setTexture(m_texture);
 	m_spr.setPosition(pos.x, pos.y);
 }
-void Player::update(sf::RenderWindow &w)
+void Player::update()
 {
-	boundary(w);
 	angle = m_spr.getRotation();
 	for (int i = 0; i < bullets.size(); i++)
 	{
@@ -66,27 +65,7 @@ void Player::render(sf::RenderWindow &w)
 	}
 	w.draw(m_spr);
 }
-void Player::boundary(sf::RenderWindow &w)
-{
-	if (m_spr.getPosition().x > w.getSize().x)
-	{
-		pos.x = 0 -m_spr.getGlobalBounds().width;
-	}
-	else if (m_spr.getPosition().y > w.getSize().y)
-	{
-		pos.y = 0 - m_spr.getGlobalBounds().height;
-	}
-	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width < 0)
-	{
-		pos.x = w.getSize().x;
-	}
-	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height < 0)
-	{
-		pos.y = w.getSize().y;
-	}
 
-	m_spr.setPosition(pos);
-}
 void Player::setObjRotation(float r)
 {
 	m_spr.setRotation(m_spr.getRotation() + r);
@@ -105,7 +84,6 @@ void Player::shoot()
 	{
 		currentBullets++;
 		bullets.push_back(new Bullet(sf::Vector2f(pos.x, pos.y), "assets/playerbullet.png", m_spr.getRotation()));
-		std::cout << "Fire" << std::endl;
 	}
 }
 std::vector<sf::IntRect> Player::getRects()
@@ -135,5 +113,17 @@ void Player::collisionManager(std::vector<sf::IntRect> r)
 	for (int i = 0; i < bullets.size(); i++)
 	{
 		bullets.at(i)->collisionManager(r);
+	}
+}
+sf::IntRect Player::getRect()
+{
+	return myBox;
+}
+void Player::collectWorkers(sf::IntRect target)
+{
+	if (target.intersects(myBox))
+	{
+		workerCount++;
+		std::cout << workerCount << std::endl;
 	}
 }
