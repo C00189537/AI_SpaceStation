@@ -18,7 +18,7 @@ void Player::create(sf::Vector2f p, sf::Vector2f vel, std::string file)
 	m_spr.setOrigin(m_spr.getGlobalBounds().width / 2, m_spr.getGlobalBounds().height / 2);
 	angle = 20;
 	myBox = sf::IntRect(p.x, p.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
-	std::cout << hp << std::endl;
+	//std::cout << hp << std::endl;
 }
 void Player::loadSprite()
 {
@@ -47,6 +47,7 @@ void Player::update()
 		}
 	}
 	myBox = sf::IntRect(pos.x, pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
+	//std::cout << workerCount << std::endl;
 
 }
 void Player::updateVelocity(int v)
@@ -124,6 +125,9 @@ void Player::collectWorkers(sf::IntRect target)
 	if (target.intersects(myBox))
 	{
 		workerCount++;
-		std::cout << workerCount << std::endl;
 	}
+}
+void Player::addWorker(int w)
+{
+	workerCount += w;
 }

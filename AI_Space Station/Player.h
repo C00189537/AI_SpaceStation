@@ -32,6 +32,7 @@ public:
 	sf::IntRect getRect();
 	void collectWorkers(sf::IntRect target);
 	void collisionManager(std::vector<sf::IntRect> r);
+	void addWorker(int w);
 
 private:
 

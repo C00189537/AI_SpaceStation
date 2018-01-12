@@ -81,3 +81,15 @@ void Worker::collisionManager(sf::IntRect target)
 		alive = false;
 	}
 }
+sf::Vector2f Worker::getPos()
+{
+	return m_pos;
+}
+sf::Vector2f Worker::getVelocity()
+{
+	return m_velocity;
+}
+float Worker::getRotation()
+{
+	return m_spr.getRotation();
+}

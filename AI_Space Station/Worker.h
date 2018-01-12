@@ -14,6 +14,9 @@ public:
 	sf::IntRect getRect();
 	void collisionManager(sf::IntRect target);
 	bool alive = true;
+	sf::Vector2f getPos();
+	sf::Vector2f getVelocity();
+	float getRotation();
 
 private:
 

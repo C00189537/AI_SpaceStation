@@ -30,6 +30,7 @@
     <ClCompile Include="Predator.cpp" />
     <ClCompile Include="Radar.cpp" />
     <ClCompile Include="Spawner.cpp" />
+    <ClCompile Include="Sweeper.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Worker.cpp" />
   </ItemGroup>
@@ -44,6 +45,7 @@
     <ClInclude Include="Predator.h" />
     <ClInclude Include="Radar.h" />
     <ClInclude Include="Spawner.h" />
+    <ClInclude Include="Sweeper.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Worker.h" />
   </ItemGroup>

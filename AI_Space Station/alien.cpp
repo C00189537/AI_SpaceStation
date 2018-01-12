@@ -45,6 +45,8 @@ void alien::loadSprite()
 void alien::update()
 {
 	m_spr.setRotation(m_orientation);
+	m_spr.setPosition(m_pos);
+	myBox = sf::IntRect(m_pos.x, m_pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
 }
 void alien::updateMovement(sf::Vector2f pos, sf::Time t, float rotation, sf::Vector2f v)
 {
