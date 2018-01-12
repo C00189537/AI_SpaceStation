@@ -58,14 +58,7 @@ void Player::update(sf::RenderWindow &w)
 		}
 	}
 	myBox = sf::IntRect(pos.x, pos.y, m_spr.getGlobalBounds().width, m_spr.getGlobalBounds().height);
-	if (shieldApplied)
-	{
-		healthMeter.setFillColor(sf::Color(0, 255, 220, 180));
-	}
-	else
-	{
-		healthMeter.setFillColor(sf::Color(0, 255, 0, 180));
-	}
+	
 }
 void Player::updateVelocity(float v)
 {
@@ -92,21 +85,21 @@ void Player::render(sf::RenderWindow &w)
 }
 void Player::boundary(sf::RenderWindow &w)
 {
-	if (m_spr.getPosition().x > 1280)
+	if (m_spr.getPosition().x > 1280 - 64)
 	{
-		pos.x = 0 -m_spr.getGlobalBounds().width;
+		pos.x = 0;
 	}
-	else if (m_spr.getPosition().y > 1280)
+	else if (m_spr.getPosition().y > 1280 - 64)
 	{
-		pos.y = 0 - m_spr.getGlobalBounds().height;
+		pos.y = 0;
 	}
-	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width < 0)
+	else if (m_spr.getPosition().x + m_spr.getGlobalBounds().width /2 < 0)
 	{
-		pos.x =1280;
+		pos.x =1280-64;
 	}
-	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height < 0)
+	else if (m_spr.getPosition().y + m_spr.getGlobalBounds().height /2 < 0)
 	{
-		pos.y =1280;
+		pos.y =1280-64;
 	}
 
 	m_spr.setPosition(pos);
@@ -160,10 +153,14 @@ void Player::collisionManager(std::vector<sf::IntRect> r)
 			if (shieldApplied)
 			{
 				shieldApplied = false;
+				healthMeter.setFillColor(sf::Color(0, 255, 0, 180));
 			}
 			else
 			{
 				hp--;
+				if (hp < 0)
+					hp = 0;
+				healthMeter.setSize(sf::Vector2f(10 * hp, 8));
 			}
 			std::cout << hp << std::endl;
 		}
@@ -180,4 +177,5 @@ bool Player::isShieldApplied()
 void Player::applyShield()
 {
 	shieldApplied = true;
+	healthMeter.setFillColor(sf::Color(0, 255, 220, 180));
 }
